@@ -1,0 +1,10 @@
+maxProcessingUnit=6
+waitIntervalSec=6
+
+logFolder=/home/ec2-user/environment/logs-a
+maxDurationHour=1
+maxRetry=3
+# maxRetry=100
+      
+    # maxRetry=200
+#     commandFile=./run-commands.txt
