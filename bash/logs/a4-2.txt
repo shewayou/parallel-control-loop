@@ -1,0 +1,11 @@
+Info: Wed Jun 26 19:55:29 UTC 2024 on ip-172-31-94-74.ec2.internal
+Info: /home/ec2-user/environment/pgm/run1-positive-RC.bash 15s starting
+
+Info: Wed Jun 26 19:55:29 UTC 2024 env sleep 15s to start
+Info: Wed Jun 26 19:55:44 UTC 2024 env sleep 15s end RC=0
+
+Info: /home/ec2-user/environment/pgm/run1-positive-RC.bash 15s end
+Info: Wed Jun 26 19:55:44 UTC 2024 on ip-172-31-94-74.ec2.internal
+
+
+4

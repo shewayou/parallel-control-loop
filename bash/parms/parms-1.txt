@@ -1,7 +1,8 @@
+logPath=/home/ec2-user/environment/logs
+
 maxProcessingUnit=3
 waitIntervalSec=6
 
-logFolder=/home/ec2-user/environment/logs-1
 maxDurationHour=1
 maxRetry=3
 # maxRetry=100

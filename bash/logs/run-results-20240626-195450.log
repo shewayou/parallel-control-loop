@@ -1,0 +1,146 @@
+nohup: ignoring input
+Info: 20240626:19:54:58.973 on ip-172-31-94-74.ec2.internal
+Info: /home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-1.txt /home/ec2-user/environment/parms/commands-1.txt starting
+
+Info: n_args=2
+Info: parmFile=/home/ec2-user/environment/parms/parms-1.txt. commandFile=/home/ec2-user/environment/parms/commands-1.txt.
+
+Info: logPath=/home/ec2-user/environment/logs
+Info: maxProcessingUnit=3
+Info: waitIntervalSec=6
+Info: maxDurationHour=1
+Info: maxRetry=3
+Info: logPath=/home/ec2-user/environment/logs
+
+
+
+Info: totalJobs=6
+
+Info: 20240626:19:54:58.994 More jobs, 6, than processing unit, 3.
+
+
+Info: 20240626:19:54:58.999 totalJobs=6 display:
+Info: ajProcessor[1]=0. ajRC[1]=-1. ajProcessId[1]=-1.
+        ajCmd[1]=/home/ec2-user/environment/pgm/run1.bash 12s.
+        ajOccurrence[1]=0. ajLogFile[1]=/dev/null.
+Info: ajProcessor[2]=0. ajRC[2]=-1. ajProcessId[2]=-1.
+        ajCmd[2]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 13s.
+        ajOccurrence[2]=0. ajLogFile[2]=/dev/null.
+Info: ajProcessor[3]=0. ajRC[3]=-1. ajProcessId[3]=-1.
+        ajCmd[3]=/home/ec2-user/environment/pgm/run1.bash 14s.
+        ajOccurrence[3]=0. ajLogFile[3]=/dev/null.
+Info: ajProcessor[4]=0. ajRC[4]=-1. ajProcessId[4]=-1.
+        ajCmd[4]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 15s.
+        ajOccurrence[4]=0. ajLogFile[4]=/dev/null.
+Info: ajProcessor[5]=0. ajRC[5]=-1. ajProcessId[5]=-1.
+        ajCmd[5]=/home/ec2-user/environment/pgm/run1.bash 19s.
+        ajOccurrence[5]=0. ajLogFile[5]=/dev/null.
+Info: ajProcessor[6]=0. ajRC[6]=-1. ajProcessId[6]=-1.
+        ajCmd[6]=/home/ec2-user/environment/pgm/run1.bash 9s.
+        ajOccurrence[6]=0. ajLogFile[6]=/dev/null.
+
+
+
+Info: 20240626:19:54:59.005 maxProcessingUnit=3 display:
+Info: puAssignedJob[1]=0. puState[1]=0. puOccurrence[1]=0.
+Info: puAssignedJob[2]=0. puState[2]=0. puOccurrence[2]=0.
+Info: puAssignedJob[3]=0. puState[3]=0. puOccurrence[3]=0.
+
+
+Info: 20240626:19:54:59.028 show_internal_state begin.
+Info: maxProcessingUnit=3. totalJobs=6. jobHighWaterMark=3.
+         ajInProgress=3. ajWaiting=3. ajFinished=0.
+         puBusy=3. puIdle=0.
+         maxRetry=3. logPath=/home/ec2-user/environment/logs. waitIntervalSec=6.
+
+
+Info: 20240626:19:54:59.065 totalJobs=6 display:
+Info: ajProcessor[1]=1. ajRC[1]=-1. ajProcessId[1]=5648.
+        ajCmd[1]=/home/ec2-user/environment/pgm/run1.bash 12s.
+        ajOccurrence[1]=1. ajLogFile[1]=/home/ec2-user/environment/logs/a1-1.txt.
+Info: ajProcessor[2]=2. ajRC[2]=-1. ajProcessId[2]=5649.
+        ajCmd[2]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 13s.
+        ajOccurrence[2]=1. ajLogFile[2]=/home/ec2-user/environment/logs/a2-1.txt.
+Info: ajProcessor[3]=3. ajRC[3]=-1. ajProcessId[3]=5650.
+        ajCmd[3]=/home/ec2-user/environment/pgm/run1.bash 14s.
+        ajOccurrence[3]=1. ajLogFile[3]=/home/ec2-user/environment/logs/a3-1.txt.
+Info: ajProcessor[4]=0. ajRC[4]=-1. ajProcessId[4]=-1.
+        ajCmd[4]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 15s.
+        ajOccurrence[4]=0. ajLogFile[4]=/dev/null.
+Info: ajProcessor[5]=0. ajRC[5]=-1. ajProcessId[5]=-1.
+        ajCmd[5]=/home/ec2-user/environment/pgm/run1.bash 19s.
+        ajOccurrence[5]=0. ajLogFile[5]=/dev/null.
+Info: ajProcessor[6]=0. ajRC[6]=-1. ajProcessId[6]=-1.
+        ajCmd[6]=/home/ec2-user/environment/pgm/run1.bash 9s.
+        ajOccurrence[6]=0. ajLogFile[6]=/dev/null.
+
+
+Info: 20240626:19:54:59.096 maxProcessingUnit=3 display:
+Info: puAssignedJob[1]=1. puState[1]=1. puOccurrence[1]=1.
+Info: puAssignedJob[2]=2. puState[2]=1. puOccurrence[2]=1.
+Info: puAssignedJob[3]=3. puState[3]=1. puOccurrence[3]=1.
+
+
+
+Info: 20240626:19:55:05.109 3 PUs for 6 jobs 1 iteration. PUs 0 idle, 3 busy. 0 jobs finished, 3 in progress, 3 waiting, and 3 is job high water mark.
+Info: PU 1 running job 1 and process id 5648 in progress.
+Info: PU 2 running job 2 and process id 5649 in progress.
+Info: PU 3 running job 3 and process id 5650 in progress.
+
+Info: 20240626:19:55:11.143 3 PUs for 6 jobs 2 iteration. PUs 0 idle, 3 busy. 0 jobs finished, 3 in progress, 3 waiting, and 3 is job high water mark.
+Info: PU 1 running job 1 and process id 5648 RC 0 with 1 runs, start new job 4, 2 waiting.
+Info: PU 2 running job 2 and process id 5649 in progress.
+Info: PU 3 running job 3 and process id 5650 in progress.
+
+Info: 20240626:19:55:17.203 3 PUs for 6 jobs 3 iteration. PUs 0 idle, 3 busy. 1 jobs finished, 3 in progress, 2 waiting, and 4 is job high water mark.
+Info: PU 1 running job 4 and process id 5726 in progress.
+Info: PU 2 running job 2 and process id 5649 RC 4 with 1 runs, rerun 2.
+Info: PU 3 running job 3 and process id 5650 RC 0 with 1 runs, start new job 5, 1 waiting.
+
+Info: 20240626:19:55:23.267 3 PUs for 6 jobs 4 iteration. PUs 0 idle, 3 busy. 2 jobs finished, 3 in progress, 1 waiting, and 5 is job high water mark.
+Info: PU 1 running job 4 and process id 5726 in progress.
+Info: PU 2 running job 2 and process id 5761 in progress.
+Info: PU 3 running job 5 and process id 5768 in progress.
+
+Info: 20240626:19:55:29.316 3 PUs for 6 jobs 5 iteration. PUs 0 idle, 3 busy. 2 jobs finished, 3 in progress, 1 waiting, and 5 is job high water mark.
+Info: PU 1 running job 4 and process id 5726 RC 4 with 1 runs, rerun 2.
+Info: PU 2 running job 2 and process id 5761 in progress.
+Info: PU 3 running job 5 and process id 5768 in progress.
+
+Info: 20240626:19:55:35.377 3 PUs for 6 jobs 6 iteration. PUs 0 idle, 3 busy. 2 jobs finished, 3 in progress, 1 waiting, and 5 is job high water mark.
+Info: PU 1 running job 4 and process id 5850 in progress.
+Info: PU 2 running job 2 and process id 5761 RC 4 with 2 runs, rerun 3.
+Info: PU 3 running job 5 and process id 5768 in progress.
+
+Info: 20240626:19:55:41.429 3 PUs for 6 jobs 7 iteration. PUs 0 idle, 3 busy. 2 jobs finished, 3 in progress, 1 waiting, and 5 is job high water mark.
+Info: PU 1 running job 4 and process id 5850 in progress.
+Info: PU 2 running job 2 and process id 5883 in progress.
+Info: PU 3 running job 5 and process id 5768 RC 0 with 1 runs, start new job 6, 0 waiting.
+
+Info: 20240626:19:55:47.478 3 PUs for 6 jobs 8 iteration. PUs 0 idle, 3 busy. 3 jobs finished, 3 in progress, 0 waiting, and 6 is job high water mark.
+Info: PU 1 running job 4 and process id 5850 RC 4 with 2 runs, rerun 3.
+Info: PU 2 running job 2 and process id 5883 in progress.
+Info: PU 3 running job 6 and process id 5911 in progress.
+
+Info: 20240626:19:55:53.537 3 PUs for 6 jobs 9 iteration. PUs 0 idle, 3 busy. 3 jobs finished, 3 in progress, 0 waiting, and 6 is job high water mark.
+Info: PU 1 running job 4 and process id 5937 in progress.
+Info: PU 2 running job 2 and process id 5883 RC 4 with 3 runs, 3 limit reached no more rerun, no more job to run.
+Info: PU 3 running job 6 and process id 5911 RC 0 with 1 runs, 1 in progress, 0 waiting, 5 jobs finished, 6 jobs.
+
+Info: 20240626:19:55:59.580 3 PUs for 6 jobs 10 iteration. PUs 2 idle, 1 busy. 5 jobs finished, 1 in progress, 0 waiting, and 6 is job high water mark.
+Info: PU 1 running job 4 and process id 5937 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 5 jobs.
+Info: PU 3 idle 1 in progress, 0 waiting, 5 jobs.
+
+Info: 20240626:19:56:05.616 3 PUs for 6 jobs 11 iteration. PUs 2 idle, 1 busy. 5 jobs finished, 1 in progress, 0 waiting, and 6 is job high water mark.
+Info: PU 1 running job 4 and process id 5937 RC 4 with 3 runs, 3 limit reached no more rerun, all jobs done.
+Info: PU 2 idle all finished 0 in progress, 0 waiting, 6 jobs.
+Info: PU 3 idle all finished 0 in progress, 0 waiting, 6 jobs.
+
+Info: 20240626:19:56:05.640 3 PUs for 6 jobs 12 iteration. PUs 3 idle, 0 busy. Jobs 6 finished, 0 in progress, 0 waiting, and 6 is job high water mark.
+
+
+Info: /home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-1.txt /home/ec2-user/environment/parms/commands-1.txt end
+Info: 20240626:19:56:05.649 on ip-172-31-94-74.ec2.internal
+
+

@@ -44,7 +44,7 @@ show_internal_state() {
 	echo "Info: maxProcessingUnit=$maxProcessingUnit. totalJobs=$totalJobs. jobHighWaterMark=$jobHighWaterMark."
 	echo "         ajInProgress=$ajInProgress. ajWaiting=$ajWaiting. ajFinished=$ajFinished."
 	echo "         puBusy=$puBusy. puIdle=$puIdle."
-	echo "         maxRetry=$maxRetry. logFolder=$logFolder. waitIntervalSec=$waitIntervalSec."
+	echo "         maxRetry=$maxRetry. logPath=$logPath. waitIntervalSec=$waitIntervalSec."
 	# echo "Info: $(dttm_3_decimals 0) show_internal_state end."
 	echo
 }
@@ -70,7 +70,7 @@ start_a_new_job() # $1 the processing unit, 1..maxProcessingUnit. $2 the job num
 	let ajInProgress++
 	L_cmd=${ajCmd[$L_jobNumber]}
 	ajOccurrence[$L_jobNumber]=1
-	ajLogFile[$L_jobNumber]=${logFolder}/a${L_jobNumber}-${ajOccurrence[$L_jobNumber]}.txt
+	ajLogFile[$L_jobNumber]=${logPath}/a${L_jobNumber}-${ajOccurrence[$L_jobNumber]}.txt
 	nohup $L_cmd > ${ajLogFile[$L_jobNumber]} 2>&1 &
 	ajProcessId[$L_jobNumber]=$!
 	ajRC[$L_jobNumber]=-1
@@ -90,7 +90,7 @@ rerun_job() # $1 the processing unit, 1..maxProcessingUnit.
 
 	L_cmd=${ajCmd[$L_jobNumber]}
 	let ajOccurrence[$L_jobNumber]++
-	ajLogFile[$L_jobNumber]=${logFolder}/a${L_jobNumber}-${ajOccurrence[$L_jobNumber]}.txt
+	ajLogFile[$L_jobNumber]=${logPath}/a${L_jobNumber}-${ajOccurrence[$L_jobNumber]}.txt
 	nohup $L_cmd > ${ajLogFile[$L_jobNumber]} 2>&1 &
 	ajProcessId[$L_jobNumber]=$!
 	ajRC[$L_jobNumber]=-1
@@ -143,9 +143,9 @@ do
 	fi
 done < "$parmFile"
 
-# printf 'Info: logFolder=%s\n' "${logFolder}"
-logFolder=`readlink -f $logFolder`
-printf 'Info: logFolder=%s\n' "${logFolder}"
+# printf 'Info: logPath=%s\n' "${logPath}"
+logPath=`readlink -f $logPath`
+printf 'Info: logPath=%s\n' "${logPath}"
 printf '\n'
 
 

@@ -1,9 +1,9 @@
-/home/ec2-user/environment/run1.bash 12s
+/home/ec2-user/environment/pgm/run1.bash 12s
 #   /home/ec2-user/environment/run1.bash 13s
-/home/ec2-user/environment/run1-positive-RC.bash 13s
-/home/ec2-user/environment/run1.bash 14s
-#   /home/ec2-user/environment/run1.bash 15s
-/home/ec2-user/environment/run1-positive-RC.bash 15s
-#   /home/ec2-user/environment/run1.bash 23s
-/home/ec2-user/environment/run1.bash 19s
-/home/ec2-user/environment/run1.bash 9s
+/home/ec2-user/environment/pgm/run1-positive-RC.bash 13s
+/home/ec2-user/environment/pgm/run1.bash 14s
+#   /home/ec2-user/environment/pgm/run1.bash 15s
+/home/ec2-user/environment/pgm/run1-positive-RC.bash 15s
+#   /home/ec2-user/environment/pgm/run1.bash 23s
+/home/ec2-user/environment/pgm/run1.bash 19s
+/home/ec2-user/environment/pgm/run1.bash 9s
