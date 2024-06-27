@@ -1,4 +1,3 @@
-
 folder structure:
 pgm/
     parallel-control-loop.bash      the core program
@@ -20,5 +19,14 @@ nohup ${appPath}/pgm/parallel-control-loop.bash ${appPath}/parms/parms-1.txt ${a
 
 After it's finished, review <log-path>/run-results-${dttm}.log for execution details
 
+
+If parallel-control-loop.bash cannot be executed on Linux,
+it could be the file is \r\n at the end of each line. 
+The \r needs to be removed. Use the tr -d '\r' command to fix it. Sample below:
+mv parallel-control-loop.bash windows-parallel-control-loop.bash
+cat windows-parallel-control-loop.bash | tr -d '\r' > parallel-control-loop.bash
+chmod +x parallel-control-loop.bash
+
+Repeat for the other utility bash programs too.
 
 

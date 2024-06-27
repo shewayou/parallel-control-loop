@@ -70,6 +70,7 @@ start_a_new_job() # $1 the processing unit, 1..maxProcessingUnit. $2 the job num
 	let ajInProgress++
 	L_cmd=${ajCmd[$L_jobNumber]}
 	ajOccurrence[$L_jobNumber]=1
+	ajStartTimestamp[$L_jobNumber]="\"$(dttm_3_decimals 1)\""
 	ajLogFile[$L_jobNumber]=${logPath}/a${L_jobNumber}-${ajOccurrence[$L_jobNumber]}.txt
 	nohup $L_cmd > ${ajLogFile[$L_jobNumber]} 2>&1 &
 	ajProcessId[$L_jobNumber]=$!
@@ -91,6 +92,7 @@ rerun_job() # $1 the processing unit, 1..maxProcessingUnit.
 	L_cmd=${ajCmd[$L_jobNumber]}
 	let ajOccurrence[$L_jobNumber]++
 	ajLogFile[$L_jobNumber]=${logPath}/a${L_jobNumber}-${ajOccurrence[$L_jobNumber]}.txt
+	ajStartTimestamp[$L_jobNumber]=\"$(dttm_3_decimals 1)\"
 	nohup $L_cmd > ${ajLogFile[$L_jobNumber]} 2>&1 &
 	ajProcessId[$L_jobNumber]=$!
 	ajRC[$L_jobNumber]=-1
@@ -98,6 +100,51 @@ rerun_job() # $1 the processing unit, 1..maxProcessingUnit.
 	puState[$L_processorNumber]=1
 	let puOccurrence[$L_processorNumber]++
 }
+
+
+function build_statusDescription() {
+	local L_jobNumber=$1
+	local tmpTxt=${ajStatusDescription[$L_jobNumber]}
+	local newTxt=
+	if [ ${ajOccurrence[$L_jobNumber]} -eq 1 ]; then
+		:
+	else
+		newTxt=", "
+	fi
+	newTxt+="{ \"pu\":${ajProcessor[$L_jobNumber]}\
+ , \"job\":$L_jobNumber\
+ , \"iteration\":${ajOccurrence[$L_jobNumber]}\
+ , \"RC\":${ajRC[$L_jobNumber]}\
+ , \"startTimestamp\":${ajStartTimestamp[$L_jobNumber]}\
+ , \"endTimestamp\":${ajEndTimestamp[$L_jobNumber]}\
+ , \"log\":\"${ajLogFile[$L_jobNumber]}\" }"
+ 	ajStatusDescription[$L_jobNumber]+="$newTxt"
+}
+
+function wrapup_statusDescription() {
+	for (( jobNumber= 1; jobNumber <= $totalJobs; jobNumber++ )); do
+		ajStatusDescription[$jobNumber]+=" ] }"
+	done
+}
+
+function display_statusDescription() {
+#	wrapup_statusDescription
+
+	echo "Info: Jobs run status"
+	echo "{ \"runStatus\": ["; 
+	echo "${ajStatusDescription[1]}"
+
+	for (( jobNumber= 2; jobNumber <= $totalJobs; jobNumber++ )); do
+		echo ", ${ajStatusDescription[$jobNumber]}"; 
+	done
+	echo "] }"; echo 
+}
+
+
+
+
+
+
 
 
 # Usage:   parallel-control-loop-2-parms.bash parameter-file-path command-file-path
@@ -152,9 +199,12 @@ printf '\n'
 
 # Read commandFile to get all jobs info.    Remove comments and empty lines.
 # setup jobs array when reading the commandFile    aj prefix for All Jobs
+ajStatusDescription=()
 ajProcessor=()    # Values 1..maxProcessingUnit
 ajRC=()           # Return code: -1: the default, for not run yet. 
 ajProcessId=()
+ajStartTimestamp=()
+ajEndTimestamp=()
 ajCmd=()
 ajOccurrence=()   # # of executions for this job: 0, 1, ... maxRetry.
 ajLogFile=()
@@ -171,10 +221,13 @@ do
 		:
 	else
 		# echo "Info: $newLine"
+		ajStatusDescription[$idx]=
 		ajCmd[$idx]="$newLine"  # Populate ajCmd array.
 		ajRC[$idx]=-1       # -1: the default, for not run yet.
 		ajProcessId[$idx]=-1
 		ajProcessor[$idx]=0
+		ajStartTimestamp[$idx]=0
+		ajEndTimestamp[$idx]=0
 		ajLogFile[$idx]="/dev/null"
 		ajOccurrence[$idx]=0    # # of executions for this job: 0: the default, for not run yet.
 		let idx++
@@ -277,6 +330,7 @@ while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationC
 			else    # B 2-3: Job running or not? No, job finished! Next check its RC & maxRetry & ajWaiting!
 				# Processing Unit assigned job finished
 				# Get its RC, ajRC[$currentJobNumber]
+				ajEndTimestamp[$currentJobNumber]="\"$(dttm_3_decimals 1)\""
 				let puIdle++
 				let puBusy--
 				let ajInProgress--
@@ -285,7 +339,8 @@ while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationC
 					ajRC[$currentJobNumber]=1
 					msg+=", reset RC to ${ajRC[$currentJobNumber]}"
 				fi
-				msg+=" RC ${ajRC[$currentJobNumber]} with ${ajOccurrence[$currentJobNumber]} runs"
+				msg+=", RC ${ajRC[$currentJobNumber]} with ${ajOccurrence[$currentJobNumber]} runs"
+				build_statusDescription $currentJobNumber
 
 				if [ ${ajRC[${currentJobNumber}]} -gt 1 ] && [ ${ajOccurrence[${currentJobNumber}]} -ge $maxRetry ]; then
 			    # C 1-4: RC & maxRetry & ajWaiting: RC> 1 && no more rerun
@@ -358,6 +413,10 @@ msg="Info: $(dttm_3_decimals 1) $maxProcessingUnit PUs for $totalJobs jobs ${ite
 msg+=" PUs $puIdle idle, $puBusy busy."
 msg+=" Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting, and $jobHighWaterMark is job high water mark."
 echo $msg
+
+echo ; echo
+display_statusDescription
+
 
 
 echo ; echo

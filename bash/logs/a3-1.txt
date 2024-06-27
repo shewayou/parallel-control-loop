@@ -1,11 +1,11 @@
-Info: Wed Jun 26 19:54:59 UTC 2024 on ip-172-31-94-74.ec2.internal
+Info: Thu Jun 27 16:29:30 UTC 2024 on ip-172-31-94-74.ec2.internal
 Info: /home/ec2-user/environment/pgm/run1.bash 14s starting
 
-Info: Wed Jun 26 19:54:59 UTC 2024 env sleep 14s to start
-Info: Wed Jun 26 19:55:13 UTC 2024 env sleep 14s end RC=0
+Info: Thu Jun 27 16:29:30 UTC 2024 env sleep 14s to start
+Info: Thu Jun 27 16:29:44 UTC 2024 env sleep 14s end RC=0
 
 Info: /home/ec2-user/environment/pgm/run1.bash 14s end
-Info: Wed Jun 26 19:55:13 UTC 2024 on ip-172-31-94-74.ec2.internal
+Info: Thu Jun 27 16:29:44 UTC 2024 on ip-172-31-94-74.ec2.internal
 
 
 0
