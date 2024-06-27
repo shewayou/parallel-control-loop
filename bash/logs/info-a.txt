@@ -1,0 +1,121 @@
+nohup: ignoring input
+Info: 20240627:16:29:29.954 on ip-172-31-94-74.ec2.internal
+Info: /home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-a.txt /home/ec2-user/environment/parms/commands-a.txt starting
+
+Info: n_args=2
+Info: parmFile=/home/ec2-user/environment/parms/parms-a.txt. commandFile=/home/ec2-user/environment/parms/commands-a.txt.
+
+Info: maxProcessingUnit=6
+Info: waitIntervalSec=6
+Info: logPath=/home/ec2-user/environment/logs-a
+Info: maxDurationHour=1
+Info: maxRetry=3
+Info: logPath=/home/ec2-user/environment/logs-a
+
+
+
+Info: totalJobs=2
+
+Info: 20240627:16:29:29.979 More processing unit, 6, than jobs, 2. Reset maxProcessingUnit to 2, same as jobs.
+
+
+Info: 20240627:16:29:29.986 totalJobs=2 display:
+Info: ajProcessor[1]=0. ajRC[1]=-1. ajProcessId[1]=-1.
+        ajCmd[1]=/home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-1.txt /home/ec2-user/environment/parms/commands-1.txt.
+        ajOccurrence[1]=0. ajLogFile[1]=/dev/null.
+Info: ajProcessor[2]=0. ajRC[2]=-1. ajProcessId[2]=-1.
+        ajCmd[2]=/home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-2.txt /home/ec2-user/environment/parms/commands-2.txt.
+        ajOccurrence[2]=0. ajLogFile[2]=/dev/null.
+
+
+
+Info: 20240627:16:29:29.993 maxProcessingUnit=2 display:
+Info: puAssignedJob[1]=0. puState[1]=0. puOccurrence[1]=0.
+Info: puAssignedJob[2]=0. puState[2]=0. puOccurrence[2]=0.
+
+
+Info: 20240627:16:29:30.023 show_internal_state begin.
+Info: maxProcessingUnit=2. totalJobs=2. jobHighWaterMark=2.
+         ajInProgress=2. ajWaiting=0. ajFinished=0.
+         puBusy=2. puIdle=0.
+         maxRetry=3. logPath=/home/ec2-user/environment/logs-a. waitIntervalSec=6.
+
+
+Info: 20240627:16:29:30.046 totalJobs=2 display:
+Info: ajProcessor[1]=1. ajRC[1]=-1. ajProcessId[1]=17459.
+        ajCmd[1]=/home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-1.txt /home/ec2-user/environment/parms/commands-1.txt.
+        ajOccurrence[1]=1. ajLogFile[1]=/home/ec2-user/environment/logs-a/a1-1.txt.
+Info: ajProcessor[2]=2. ajRC[2]=-1. ajProcessId[2]=17467.
+        ajCmd[2]=/home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-2.txt /home/ec2-user/environment/parms/commands-2.txt.
+        ajOccurrence[2]=1. ajLogFile[2]=/home/ec2-user/environment/logs-a/a2-1.txt.
+
+
+Info: 20240627:16:29:30.066 maxProcessingUnit=2 display:
+Info: puAssignedJob[1]=1. puState[1]=1. puOccurrence[1]=1.
+Info: puAssignedJob[2]=2. puState[2]=1. puOccurrence[2]=1.
+
+
+
+Info: 20240627:16:29:36.092 2 PUs for 2 jobs 1 iteration. PUs 0 idle, 2 busy. 0 jobs finished, 2 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 running job 2 and process id 17467 in progress.
+
+Info: 20240627:16:29:42.118 2 PUs for 2 jobs 2 iteration. PUs 0 idle, 2 busy. 0 jobs finished, 2 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 running job 2 and process id 17467 in progress.
+
+Info: 20240627:16:29:48.153 2 PUs for 2 jobs 3 iteration. PUs 0 idle, 2 busy. 0 jobs finished, 2 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 running job 2 and process id 17467, reset RC to 1, RC 1 with 1 runs, 1 in progress, 0 waiting, 1 jobs finished, 2 jobs.
+
+Info: 20240627:16:29:54.187 2 PUs for 2 jobs 4 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 1 jobs.
+
+Info: 20240627:16:30:00.209 2 PUs for 2 jobs 5 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 1 jobs.
+
+Info: 20240627:16:30:06.232 2 PUs for 2 jobs 6 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 1 jobs.
+
+Info: 20240627:16:30:12.254 2 PUs for 2 jobs 7 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 1 jobs.
+
+Info: 20240627:16:30:18.275 2 PUs for 2 jobs 8 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 1 jobs.
+
+Info: 20240627:16:30:24.295 2 PUs for 2 jobs 9 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 1 jobs.
+
+Info: 20240627:16:30:30.314 2 PUs for 2 jobs 10 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 1 jobs.
+
+Info: 20240627:16:30:36.336 2 PUs for 2 jobs 11 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459 in progress.
+Info: PU 2 idle 1 in progress, 0 waiting, 1 jobs.
+
+Info: 20240627:16:30:42.357 2 PUs for 2 jobs 12 iteration. PUs 1 idle, 1 busy. 1 jobs finished, 1 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 17459, reset RC to 1, RC 1 with 1 runs, 0 in progress, 0 waiting, 2 jobs finished.
+Info: PU 2 idle all finished 0 in progress, 0 waiting, 2 jobs.
+
+Info: 20240627:16:30:42.385 2 PUs for 2 jobs 13 iteration. PUs 2 idle, 0 busy. Jobs 2 finished, 0 in progress, 0 waiting, and 2 is job high water mark.
+
+
+Info: Jobs run status
+{ "runStatus": [
+{ "pu":1 , "job":1 , "iteration":1 , "RC":1 , "startTimestamp":"20240627:16:29:30.005" , "endTimestamp":"20240627:16:30:42.371" , "log":"/home/ec2-user/environment/logs-a/a1-1.txt" }
+, { "pu":2 , "job":2 , "iteration":1 , "RC":1 , "startTimestamp":"20240627:16:29:30.010" , "endTimestamp":"20240627:16:29:48.175" , "log":"/home/ec2-user/environment/logs-a/a2-1.txt" }
+] }
+
+
+
+Info: /home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-a.txt /home/ec2-user/environment/parms/commands-a.txt end
+Info: 20240627:16:30:42.392 on ip-172-31-94-74.ec2.internal
+
+

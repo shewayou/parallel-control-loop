@@ -1,0 +1,81 @@
+nohup: ignoring input
+Info: 20240627:16:27:14.112 on ip-172-31-94-74.ec2.internal
+Info: /home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-2.txt /home/ec2-user/environment/parms/commands-2.txt starting
+
+Info: n_args=2
+Info: parmFile=/home/ec2-user/environment/parms/parms-2.txt. commandFile=/home/ec2-user/environment/parms/commands-2.txt.
+
+Info: maxProcessingUnit=6
+Info: waitIntervalSec=6
+Info: logPath=/home/ec2-user/environment/logs-2
+Info: maxDurationHour=1
+Info: maxRetry=2
+Info: logPath=/home/ec2-user/environment/logs-2
+
+
+
+Info: totalJobs=2
+
+Info: 20240627:16:27:14.140 More processing unit, 6, than jobs, 2. Reset maxProcessingUnit to 2, same as jobs.
+
+
+Info: 20240627:16:27:14.146 totalJobs=2 display:
+Info: ajProcessor[1]=0. ajRC[1]=-1. ajProcessId[1]=-1.
+        ajCmd[1]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 4s.
+        ajOccurrence[1]=0. ajLogFile[1]=/dev/null.
+Info: ajProcessor[2]=0. ajRC[2]=-1. ajProcessId[2]=-1.
+        ajCmd[2]=/home/ec2-user/environment/pgm/run1.bash 8s.
+        ajOccurrence[2]=0. ajLogFile[2]=/dev/null.
+
+
+
+Info: 20240627:16:27:14.155 maxProcessingUnit=2 display:
+Info: puAssignedJob[1]=0. puState[1]=0. puOccurrence[1]=0.
+Info: puAssignedJob[2]=0. puState[2]=0. puOccurrence[2]=0.
+
+
+Info: 20240627:16:27:14.187 show_internal_state begin.
+Info: maxProcessingUnit=2. totalJobs=2. jobHighWaterMark=2.
+         ajInProgress=2. ajWaiting=0. ajFinished=0.
+         puBusy=2. puIdle=0.
+         maxRetry=2. logPath=/home/ec2-user/environment/logs-2. waitIntervalSec=6.
+
+
+Info: 20240627:16:27:14.206 totalJobs=2 display:
+Info: ajProcessor[1]=1. ajRC[1]=-1. ajProcessId[1]=16765.
+        ajCmd[1]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 4s.
+        ajOccurrence[1]=1. ajLogFile[1]=/home/ec2-user/environment/logs-2/a1-1.txt.
+Info: ajProcessor[2]=2. ajRC[2]=-1. ajProcessId[2]=16773.
+        ajCmd[2]=/home/ec2-user/environment/pgm/run1.bash 8s.
+        ajOccurrence[2]=1. ajLogFile[2]=/home/ec2-user/environment/logs-2/a2-1.txt.
+
+
+Info: 20240627:16:27:14.227 maxProcessingUnit=2 display:
+Info: puAssignedJob[1]=1. puState[1]=1. puOccurrence[1]=1.
+Info: puAssignedJob[2]=2. puState[2]=1. puOccurrence[2]=1.
+
+
+
+Info: 20240627:16:27:20.239 2 PUs for 2 jobs 1 iteration. PUs 0 idle, 2 busy. 0 jobs finished, 2 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 16765, RC 4 with 1 runs, rerun 2.
+Info: PU 2 running job 2 and process id 16773 in progress.
+
+Info: 20240627:16:27:26.287 2 PUs for 2 jobs 2 iteration. PUs 0 idle, 2 busy. 0 jobs finished, 2 in progress, 0 waiting, and 2 is job high water mark.
+Info: PU 1 running job 1 and process id 16816, RC 4 with 2 runs, 2 limit reached no more rerun, no more job to run.
+Info: PU 2 running job 2 and process id 16773, RC 0 with 1 runs, 0 in progress, 0 waiting, 2 jobs finished.
+
+Info: 20240627:16:27:26.326 2 PUs for 2 jobs 3 iteration. PUs 2 idle, 0 busy. Jobs 2 finished, 0 in progress, 0 waiting, and 2 is job high water mark.
+
+
+Info: Jobs run status
+{ "runStatus": [
+{ "pu":1 , "job":1 , "iteration":1 , "RC":4 , "startTimestamp":"20240627:16:27:14.166" , "endTimestamp":"20240627:16:27:20.253" , "log":"/home/ec2-user/environment/logs-2/a1-1.txt" }, { "pu":1 , "job":1 , "iteration":2 , "RC":4 , "startTimestamp":"20240627:16:27:20.258" , "endTimestamp":"20240627:16:27:26.302" , "log":"/home/ec2-user/environment/logs-2/a1-2.txt" }
+, { "pu":2 , "job":2 , "iteration":1 , "RC":0 , "startTimestamp":"20240627:16:27:14.171" , "endTimestamp":"20240627:16:27:26.318" , "log":"/home/ec2-user/environment/logs-2/a2-1.txt" }
+] }
+
+
+
+Info: /home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-2.txt /home/ec2-user/environment/parms/commands-2.txt end
+Info: 20240627:16:27:26.334 on ip-172-31-94-74.ec2.internal
+
+
