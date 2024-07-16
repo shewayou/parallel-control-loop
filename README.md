@@ -4,8 +4,7 @@ Assumption: This is Linux environment and all jobs run on a single Linux machine
 
 This solution: A bash script, "parallel-control-loop.bash", implements X #s of "imaginary servers" to run in parallel X #s of jobs. And every so often, say every T seconds, it checks on all these imaginary servers.
 When an imaginary server is idle, examine return code (execution status) of the job that was run. If return code is 0 or 1, then this imaginary server will start a new job. If return code greater than 1, the same 
-job will be run again, up to N times. Repeat for all Y #s of jobs until all finished or up to the limit of wall-clock duration is reached. Finally output some JSON strings indicating all jobs run status, see 
-sample below.
+job will be run again, up to N times. Repeat for all imaginary server and assign new jobs to run until all Y #s of jobs are finished or up to the limit of wall-clock duration is reached. Finally output some JSON strings indicating all jobs run status, see sample below.
 
 Future Enhancements:
 1) Implement this control loop in Python and Microsoft PowerShell languages.
