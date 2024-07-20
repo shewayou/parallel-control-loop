@@ -1,0 +1,68 @@
+python sample-read-JSON-n-plotly-Gantt-chart.py
+output below:::
+
+
+
+
+Info: input JSON file ../logs-n-output/runStatus-10.json.
+
+Info: df_json_records structure B4 change:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 21 entries, 0 to 20
+Data columns (total 7 columns):
+ #   Column          Non-Null Count  Dtype
+---  ------          --------------  -----
+ 0   is              21 non-null     int64
+ 1   job             21 non-null     int64
+ 2   iteration       21 non-null     int64
+ 3   RC              21 non-null     int64
+ 4   startTimestamp  21 non-null     object
+ 5   endTimestamp    21 non-null     object
+ 6   log             21 non-null     object
+dtypes: int64(4), object(3)
+memory usage: 1.3+ KB
+
+Info: df_json_records structure AF change:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 21 entries, 0 to 20
+Data columns (total 7 columns):
+ #   Column           Non-Null Count  Dtype
+---  ------           --------------  -----
+ 0   job              21 non-null     int64
+ 1   iteration        21 non-null     int64
+ 2   RC               21 non-null     string
+ 3   startTimestamp   21 non-null     datetime64[ns]
+ 4   endTimestamp     21 non-null     datetime64[ns]
+ 5   log              21 non-null     string
+ 6   imaginaryServer  21 non-null     string
+dtypes: datetime64[ns](2), int64(2), string(3)
+memory usage: 1.3 KB
+
+Info: Important columns for Gantt chart:
+              endTimestamp          startTimestamp imaginaryServer  job RC
+0  2024-07-19 14:48:11.771 2024-07-19 14:47:11.624               1    1  0
+5  2024-07-19 14:48:41.838 2024-07-19 14:48:11.777               1    4  0
+6  2024-07-19 14:49:11.906 2024-07-19 14:48:41.844               1    5  0
+7  2024-07-19 14:50:42.078 2024-07-19 14:49:11.912               1    6  0
+17 2024-07-19 14:58:12.910 2024-07-19 14:57:12.793               1   12  4
+16 2024-07-19 14:57:12.787 2024-07-19 14:56:12.650               1   12  4
+15 2024-07-19 14:56:12.644 2024-07-19 14:55:12.549               1   12  4
+11 2024-07-19 14:53:12.315 2024-07-19 14:50:42.083               1    8  0
+12 2024-07-19 14:55:12.543 2024-07-19 14:53:12.320               1    9  0
+1  2024-07-19 14:49:11.942 2024-07-19 14:47:11.633               2    2  4
+2  2024-07-19 14:51:12.154 2024-07-19 14:49:11.955               2    2  4
+3  2024-07-19 14:53:12.353 2024-07-19 14:51:12.160               2    2  4
+18 2024-07-19 14:59:12.966 2024-07-19 14:56:12.692               2   13  0
+13 2024-07-19 14:56:12.679 2024-07-19 14:53:12.367               2   10  0
+10 2024-07-19 14:54:42.517 2024-07-19 14:53:12.410               3    7  4
+19 2024-07-19 14:57:12.839 2024-07-19 14:56:12.734               3   14  0
+9  2024-07-19 14:53:12.396 2024-07-19 14:51:42.223               3    7  4
+8  2024-07-19 14:51:42.217 2024-07-19 14:50:12.057               3    7  4
+4  2024-07-19 14:50:12.051 2024-07-19 14:47:11.654               3    3  0
+14 2024-07-19 14:56:12.720 2024-07-19 14:54:42.523               3   11  0
+20 2024-07-19 14:57:42.886 2024-07-19 14:57:12.846               3   15  0
+
+Info: Ready for plotly.express.timeline() for Gantt chart & save to html file
+
+Info: look for ../logs-n-output/runStatus-10-Gantt-chart.html file
+Info: Bye!

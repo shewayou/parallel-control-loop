@@ -1,2 +1,0 @@
-/home/ec2-user/environment/run1-positive-RC.bash 4s
-/home/ec2-user/environment/run1.bash 8s

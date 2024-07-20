@@ -1,12 +1,12 @@
-logPath=/home/ec2-user/environment/logs
+logPath=/home/ec2-user/environment/logs-10
 
 maxProcessingUnit=3
-waitIntervalSec=6
+waitIntervalSec=30
 
-maxDurationHour=1
+maxDurationHour=100
 maxRetry=3
 # maxRetry=100
       
     # maxRetry=200
 #     commandFile=./run-commands.txt
-            
+maxIterationLimit=50

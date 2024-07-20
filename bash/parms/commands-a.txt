@@ -1,2 +1,0 @@
-/home/ec2-user/environment/parallel-control-loop.bash /home/ec2-user/environment/parms-1.txt /home/ec2-user/environment/commands-1.txt
-/home/ec2-user/environment/parallel-control-loop.bash /home/ec2-user/environment/parms-2.txt /home/ec2-user/environment/commands-2.txt

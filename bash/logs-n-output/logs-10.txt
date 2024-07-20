@@ -1,0 +1,288 @@
+nohup: ignoring input
+Info: 20240719:14:47:11.557 on ip-172-31-94-74.ec2.internal
+Info: /home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-10.txt /home/ec2-user/environment/parms/commands-10.txt starting
+
+Info: n_args=2
+Info: parmFile=/home/ec2-user/environment/parms/parms-10.txt. commandFile=/home/ec2-user/environment/parms/commands-10.txt.
+
+Info: logPath=/home/ec2-user/environment/logs-10
+Info: maxProcessingUnit=3
+Info: waitIntervalSec=30
+Info: maxDurationHour=100
+Info: maxRetry=3
+Info: maxIterationLimit=50
+Info: logPath=/home/ec2-user/environment/logs-10
+
+
+
+Info: totalJobs=15
+
+Info: 20240719:14:47:11.601 15 jobs more than 3 imaginary servers.
+
+
+Info: 20240719:14:47:11.606 Display 15 jobs:
+Info: ajProcessor[1]=0. ajRC[1]=-1. ajProcessId[1]=-1.
+        ajCmd[1]=/home/ec2-user/environment/pgm/run1.bash 51s.
+        ajOccurrence[1]=0. ajLogFile[1]=/dev/null.
+Info: ajProcessor[2]=0. ajRC[2]=-1. ajProcessId[2]=-1.
+        ajCmd[2]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 97s.
+        ajOccurrence[2]=0. ajLogFile[2]=/dev/null.
+Info: ajProcessor[3]=0. ajRC[3]=-1. ajProcessId[3]=-1.
+        ajCmd[3]=/home/ec2-user/environment/pgm/run1.bash 159s.
+        ajOccurrence[3]=0. ajLogFile[3]=/dev/null.
+Info: ajProcessor[4]=0. ajRC[4]=-1. ajProcessId[4]=-1.
+        ajCmd[4]=/home/ec2-user/environment/pgm/run1.bash 28s.
+        ajOccurrence[4]=0. ajLogFile[4]=/dev/null.
+Info: ajProcessor[5]=0. ajRC[5]=-1. ajProcessId[5]=-1.
+        ajCmd[5]=/home/ec2-user/environment/pgm/run1.bash 23s.
+        ajOccurrence[5]=0. ajLogFile[5]=/dev/null.
+Info: ajProcessor[6]=0. ajRC[6]=-1. ajProcessId[6]=-1.
+        ajCmd[6]=/home/ec2-user/environment/pgm/run1.bash 65s.
+        ajOccurrence[6]=0. ajLogFile[6]=/dev/null.
+Info: ajProcessor[7]=0. ajRC[7]=-1. ajProcessId[7]=-1.
+        ajCmd[7]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 79s.
+        ajOccurrence[7]=0. ajLogFile[7]=/dev/null.
+Info: ajProcessor[8]=0. ajRC[8]=-1. ajProcessId[8]=-1.
+        ajCmd[8]=/home/ec2-user/environment/pgm/run1.bash 146s.
+        ajOccurrence[8]=0. ajLogFile[8]=/dev/null.
+Info: ajProcessor[9]=0. ajRC[9]=-1. ajProcessId[9]=-1.
+        ajCmd[9]=/home/ec2-user/environment/pgm/run1.bash 102s.
+        ajOccurrence[9]=0. ajLogFile[9]=/dev/null.
+Info: ajProcessor[10]=0. ajRC[10]=-1. ajProcessId[10]=-1.
+        ajCmd[10]=/home/ec2-user/environment/pgm/run1.bash 165s.
+        ajOccurrence[10]=0. ajLogFile[10]=/dev/null.
+Info: ajProcessor[11]=0. ajRC[11]=-1. ajProcessId[11]=-1.
+        ajCmd[11]=/home/ec2-user/environment/pgm/run1.bash 88s.
+        ajOccurrence[11]=0. ajLogFile[11]=/dev/null.
+Info: ajProcessor[12]=0. ajRC[12]=-1. ajProcessId[12]=-1.
+        ajCmd[12]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 37s.
+        ajOccurrence[12]=0. ajLogFile[12]=/dev/null.
+Info: ajProcessor[13]=0. ajRC[13]=-1. ajProcessId[13]=-1.
+        ajCmd[13]=/home/ec2-user/environment/pgm/run1.bash 169s.
+        ajOccurrence[13]=0. ajLogFile[13]=/dev/null.
+Info: ajProcessor[14]=0. ajRC[14]=-1. ajProcessId[14]=-1.
+        ajCmd[14]=/home/ec2-user/environment/pgm/run1.bash 49s.
+        ajOccurrence[14]=0. ajLogFile[14]=/dev/null.
+Info: ajProcessor[15]=0. ajRC[15]=-1. ajProcessId[15]=-1.
+        ajCmd[15]=/home/ec2-user/environment/pgm/run1.bash 25s.
+        ajOccurrence[15]=0. ajLogFile[15]=/dev/null.
+
+
+
+Info: 20240719:14:47:11.616 Display 3 imaginary servers:
+Info: IS 1 isAssignedJob 0 isState 0 isOccurrence 0.
+Info: IS 2 isAssignedJob 0 isState 0 isOccurrence 0.
+Info: IS 3 isAssignedJob 0 isState 0 isOccurrence 0.
+
+
+Info: 20240719:14:47:11.678 show_internal_state begin.
+Info: maxProcessingUnit=3. totalJobs=15. jobHighWaterMark=3.
+         ajInProgress=3. ajWaiting=12. ajFinished=0.
+         isBusy=3. isIdle=0.
+         logPath=/home/ec2-user/environment/logs-10. maxRetry=3.
+         waitIntervalSec=30. maxIterationLimit=50.
+
+
+Info: 20240719:14:47:11.696 Display 15 jobs:
+Info: ajProcessor[1]=1. ajRC[1]=-1. ajProcessId[1]=6227.
+        ajCmd[1]=/home/ec2-user/environment/pgm/run1.bash 51s.
+        ajOccurrence[1]=1. ajLogFile[1]=/home/ec2-user/environment/logs-10/a1-1.txt.
+Info: ajProcessor[2]=2. ajRC[2]=-1. ajProcessId[2]=6235.
+        ajCmd[2]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 97s.
+        ajOccurrence[2]=1. ajLogFile[2]=/home/ec2-user/environment/logs-10/a2-1.txt.
+Info: ajProcessor[3]=3. ajRC[3]=-1. ajProcessId[3]=6244.
+        ajCmd[3]=/home/ec2-user/environment/pgm/run1.bash 159s.
+        ajOccurrence[3]=1. ajLogFile[3]=/home/ec2-user/environment/logs-10/a3-1.txt.
+Info: ajProcessor[4]=0. ajRC[4]=-1. ajProcessId[4]=-1.
+        ajCmd[4]=/home/ec2-user/environment/pgm/run1.bash 28s.
+        ajOccurrence[4]=0. ajLogFile[4]=/dev/null.
+Info: ajProcessor[5]=0. ajRC[5]=-1. ajProcessId[5]=-1.
+        ajCmd[5]=/home/ec2-user/environment/pgm/run1.bash 23s.
+        ajOccurrence[5]=0. ajLogFile[5]=/dev/null.
+Info: ajProcessor[6]=0. ajRC[6]=-1. ajProcessId[6]=-1.
+        ajCmd[6]=/home/ec2-user/environment/pgm/run1.bash 65s.
+        ajOccurrence[6]=0. ajLogFile[6]=/dev/null.
+Info: ajProcessor[7]=0. ajRC[7]=-1. ajProcessId[7]=-1.
+        ajCmd[7]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 79s.
+        ajOccurrence[7]=0. ajLogFile[7]=/dev/null.
+Info: ajProcessor[8]=0. ajRC[8]=-1. ajProcessId[8]=-1.
+        ajCmd[8]=/home/ec2-user/environment/pgm/run1.bash 146s.
+        ajOccurrence[8]=0. ajLogFile[8]=/dev/null.
+Info: ajProcessor[9]=0. ajRC[9]=-1. ajProcessId[9]=-1.
+        ajCmd[9]=/home/ec2-user/environment/pgm/run1.bash 102s.
+        ajOccurrence[9]=0. ajLogFile[9]=/dev/null.
+Info: ajProcessor[10]=0. ajRC[10]=-1. ajProcessId[10]=-1.
+        ajCmd[10]=/home/ec2-user/environment/pgm/run1.bash 165s.
+        ajOccurrence[10]=0. ajLogFile[10]=/dev/null.
+Info: ajProcessor[11]=0. ajRC[11]=-1. ajProcessId[11]=-1.
+        ajCmd[11]=/home/ec2-user/environment/pgm/run1.bash 88s.
+        ajOccurrence[11]=0. ajLogFile[11]=/dev/null.
+Info: ajProcessor[12]=0. ajRC[12]=-1. ajProcessId[12]=-1.
+        ajCmd[12]=/home/ec2-user/environment/pgm/run1-positive-RC.bash 37s.
+        ajOccurrence[12]=0. ajLogFile[12]=/dev/null.
+Info: ajProcessor[13]=0. ajRC[13]=-1. ajProcessId[13]=-1.
+        ajCmd[13]=/home/ec2-user/environment/pgm/run1.bash 169s.
+        ajOccurrence[13]=0. ajLogFile[13]=/dev/null.
+Info: ajProcessor[14]=0. ajRC[14]=-1. ajProcessId[14]=-1.
+        ajCmd[14]=/home/ec2-user/environment/pgm/run1.bash 49s.
+        ajOccurrence[14]=0. ajLogFile[14]=/dev/null.
+Info: ajProcessor[15]=0. ajRC[15]=-1. ajProcessId[15]=-1.
+        ajCmd[15]=/home/ec2-user/environment/pgm/run1.bash 25s.
+        ajOccurrence[15]=0. ajLogFile[15]=/dev/null.
+
+
+
+
+Info: 20240719:14:47:11.716 Display 3 imaginary servers:
+Info: IS 1 isAssignedJob 1 isState 1 isOccurrence 1 process id 6227.
+Info: IS 2 isAssignedJob 2 isState 1 isOccurrence 1 process id 6235.
+Info: IS 3 isAssignedJob 3 isState 1 isOccurrence 1 process id 6244.
+
+Info: 20240719:14:47:41.726 1 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 0 finished, 3 in progress, 12 waiting, and 3 high water mark.
+Info: IS 1 running job 1 process id 6227 in progress.
+Info: IS 2 running job 2 process id 6235 in progress.
+Info: IS 3 running job 3 process id 6244 in progress.
+
+Info: 20240719:14:48:11.759 2 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 0 finished, 3 in progress, 12 waiting, and 3 high water mark.
+Info: IS 1 running job 1 process id 6227, RC 0 with 1 runs. Start new job 4 process id 6394, 11 waiting.
+Info: IS 2 running job 2 process id 6235 in progress.
+Info: IS 3 running job 3 process id 6244 in progress.
+
+Info: 20240719:14:48:41.825 3 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 1 finished, 3 in progress, 11 waiting, and 4 high water mark.
+Info: IS 1 running job 4 process id 6394, RC 0 with 1 runs. Start new job 5 process id 6447, 10 waiting.
+Info: IS 2 running job 2 process id 6235 in progress.
+Info: IS 3 running job 3 process id 6244 in progress.
+
+Info: 20240719:14:49:11.894 4 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 2 finished, 3 in progress, 10 waiting, and 5 high water mark.
+Info: IS 1 running job 5 process id 6447, RC 0 with 1 runs. Start new job 6 process id 6511, 9 waiting.
+Info: IS 2 running job 2 process id 6235, RC 4 with 1 runs, rerun 2 process id 6528.
+Info: IS 3 running job 3 process id 6244 in progress.
+
+Info: 20240719:14:49:41.983 5 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 3 finished, 3 in progress, 9 waiting, and 6 high water mark.
+Info: IS 1 running job 6 process id 6511 in progress.
+Info: IS 2 running job 2 process id 6528 in progress.
+Info: IS 3 running job 3 process id 6244 in progress.
+
+Info: 20240719:14:50:12.015 6 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 3 finished, 3 in progress, 9 waiting, and 6 high water mark.
+Info: IS 1 running job 6 process id 6511 in progress.
+Info: IS 2 running job 2 process id 6528 in progress.
+Info: IS 3 running job 3 process id 6244, RC 0 with 1 runs. Start new job 7 process id 6703, 8 waiting.
+
+Info: 20240719:14:50:42.065 7 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 4 finished, 3 in progress, 8 waiting, and 7 high water mark.
+Info: IS 1 running job 6 process id 6511, RC 0 with 1 runs. Start new job 8 process id 6746, 7 waiting.
+Info: IS 2 running job 2 process id 6528 in progress.
+Info: IS 3 running job 7 process id 6703 in progress.
+
+Info: 20240719:14:51:12.134 8 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 5 finished, 3 in progress, 7 waiting, and 8 high water mark.
+Info: IS 1 running job 8 process id 6746 in progress.
+Info: IS 2 running job 2 process id 6528, RC 4 with 2 runs, rerun 3 process id 6853.
+Info: IS 3 running job 7 process id 6703 in progress.
+
+Info: 20240719:14:51:42.187 9 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 5 finished, 3 in progress, 7 waiting, and 8 high water mark.
+Info: IS 1 running job 8 process id 6746 in progress.
+Info: IS 2 running job 2 process id 6853 in progress.
+Info: IS 3 running job 7 process id 6703, RC 4 with 1 runs, rerun 2 process id 6901.
+
+Info: 20240719:14:52:12.231 10 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 5 finished, 3 in progress, 7 waiting, and 8 high water mark.
+Info: IS 1 running job 8 process id 6746 in progress.
+Info: IS 2 running job 2 process id 6853 in progress.
+Info: IS 3 running job 7 process id 6901 in progress.
+
+Info: 20240719:14:52:42.267 11 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 5 finished, 3 in progress, 7 waiting, and 8 high water mark.
+Info: IS 1 running job 8 process id 6746 in progress.
+Info: IS 2 running job 2 process id 6853 in progress.
+Info: IS 3 running job 7 process id 6901 in progress.
+
+Info: 20240719:14:53:12.301 12 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 5 finished, 3 in progress, 7 waiting, and 8 high water mark.
+Info: IS 1 running job 8 process id 6746, RC 0 with 1 runs. Start new job 9 process id 7087, 6 waiting.
+Info: IS 2 running job 2 process id 6853, RC 4 with 3 runs, 3 limit reached no more rerun. Start new job 10 process id 7104.
+Info: IS 3 running job 7 process id 6901, RC 4 with 2 runs, rerun 3 process id 7121.
+
+Info: 20240719:14:53:42.419 13 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 7 finished, 3 in progress, 5 waiting, and 10 high water mark.
+Info: IS 1 running job 9 process id 7087 in progress.
+Info: IS 2 running job 10 process id 7104 in progress.
+Info: IS 3 running job 7 process id 7121 in progress.
+
+Info: 20240719:14:54:12.452 14 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 7 finished, 3 in progress, 5 waiting, and 10 high water mark.
+Info: IS 1 running job 9 process id 7087 in progress.
+Info: IS 2 running job 10 process id 7104 in progress.
+Info: IS 3 running job 7 process id 7121 in progress.
+
+Info: 20240719:14:54:42.487 15 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 7 finished, 3 in progress, 5 waiting, and 10 high water mark.
+Info: IS 1 running job 9 process id 7087 in progress.
+Info: IS 2 running job 10 process id 7104 in progress.
+Info: IS 3 running job 7 process id 7121, RC 4 with 3 runs, 3 limit reached no more rerun. Start new job 11 process id 7234.
+
+Info: 20240719:14:55:12.531 16 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 8 finished, 3 in progress, 4 waiting, and 11 high water mark.
+Info: IS 1 running job 9 process id 7087, RC 0 with 1 runs. Start new job 12 process id 7333, 3 waiting.
+Info: IS 2 running job 10 process id 7104 in progress.
+Info: IS 3 running job 11 process id 7234 in progress.
+
+Info: 20240719:14:55:42.600 17 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 9 finished, 3 in progress, 3 waiting, and 12 high water mark.
+Info: IS 1 running job 12 process id 7333 in progress.
+Info: IS 2 running job 10 process id 7104 in progress.
+Info: IS 3 running job 11 process id 7234 in progress.
+
+Info: 20240719:14:56:12.632 18 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 9 finished, 3 in progress, 3 waiting, and 12 high water mark.
+Info: IS 1 running job 12 process id 7333, RC 4 with 1 runs, rerun 2 process id 7426.
+Info: IS 2 running job 10 process id 7104, RC 0 with 1 runs. Start new job 13 process id 7443, 2 waiting.
+Info: IS 3 running job 11 process id 7234, RC 0 with 1 runs. Start new job 14 process id 7460, 1 waiting.
+
+Info: 20240719:14:56:42.742 19 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 11 finished, 3 in progress, 1 waiting, and 14 high water mark.
+Info: IS 1 running job 12 process id 7426 in progress.
+Info: IS 2 running job 13 process id 7443 in progress.
+Info: IS 3 running job 14 process id 7460 in progress.
+
+Info: 20240719:14:57:12.775 20 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 11 finished, 3 in progress, 1 waiting, and 14 high water mark.
+Info: IS 1 running job 12 process id 7426, RC 4 with 2 runs, rerun 3 process id 7591.
+Info: IS 2 running job 13 process id 7443 in progress.
+Info: IS 3 running job 14 process id 7460, RC 0 with 1 runs. Start new job 15 process id 7610, 0 waiting.
+
+Info: 20240719:14:57:42.855 21 iteration 3 ISs 15 jobs. ISs 0 idle, 3 busy. Jobs 12 finished, 3 in progress, 0 waiting, and 15 high water mark.
+Info: IS 1 running job 12 process id 7591 in progress.
+Info: IS 2 running job 13 process id 7443 in progress.
+Info: IS 3 running job 15 process id 7610, RC 0 with 1 runs. Jobs 13 finished, 2 in progress, 0 waiting.
+
+Info: 20240719:14:58:12.896 22 iteration 3 ISs 15 jobs. ISs 1 idle, 2 busy. Jobs 13 finished, 2 in progress, 0 waiting, and 15 high water mark.
+Info: IS 1 running job 12 process id 7591, RC 4 with 3 runs, 3 limit reached no more rerun. No more job to run.
+Info: IS 2 running job 13 process id 7443 in progress.
+Info: IS 3 idle. Jobs 14 finished, 1 in progress, 0 waiting.
+
+Info: 20240719:14:58:42.929 23 iteration 3 ISs 15 jobs. ISs 2 idle, 1 busy. Jobs 14 finished, 1 in progress, 0 waiting, and 15 high water mark.
+Info: IS 1 idle. Jobs 14 finished, 1 in progress, 0 waiting.
+Info: IS 2 running job 13 process id 7443 in progress.
+Info: IS 3 idle. Jobs 14 finished, 1 in progress, 0 waiting.
+
+Info: 20240719:14:59:12.950 24 iteration 3 ISs 15 jobs. ISs 2 idle, 1 busy. Jobs 14 finished, 1 in progress, 0 waiting, and 15 high water mark.
+Info: IS 1 idle. Jobs 14 finished, 1 in progress, 0 waiting.
+Info: IS 2 running job 13 process id 7443, RC 0 with 1 runs. Jobs 15 finished, 0 in progress, 0 waiting.
+Info: IS 3 idle. Jobs 15 all finished.
+
+Info: 20240719:14:59:12.974 24 iteration 3 ISs 15 jobs. ISs 3 idle, 0 busy. Jobs 15 finished, 0 in progress, 0 waiting, and 15 high water mark.
+
+
+Info: Jobs run status
+{ "runStatus": [
+{ "is":1 , "job":1 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:47:11.624" , "endTimestamp":"20240719:14:48:11.771" , "log":"/home/ec2-user/environment/logs-10/a1-1.txt" }
+, { "is":2 , "job":2 , "iteration":1 , "RC":4 , "startTimestamp":"20240719:14:47:11.633" , "endTimestamp":"20240719:14:49:11.942" , "log":"/home/ec2-user/environment/logs-10/a2-1.txt" }, { "is":2 , "job":2 , "iteration":2 , "RC":4 , "startTimestamp":"20240719:14:49:11.955" , "endTimestamp":"20240719:14:51:12.154" , "log":"/home/ec2-user/environment/logs-10/a2-2.txt" }, { "is":2 , "job":2 , "iteration":3 , "RC":4 , "startTimestamp":"20240719:14:51:12.160" , "endTimestamp":"20240719:14:53:12.353" , "log":"/home/ec2-user/environment/logs-10/a2-3.txt" }
+, { "is":3 , "job":3 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:47:11.654" , "endTimestamp":"20240719:14:50:12.051" , "log":"/home/ec2-user/environment/logs-10/a3-1.txt" }
+, { "is":1 , "job":4 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:48:11.777" , "endTimestamp":"20240719:14:48:41.838" , "log":"/home/ec2-user/environment/logs-10/a4-1.txt" }
+, { "is":1 , "job":5 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:48:41.844" , "endTimestamp":"20240719:14:49:11.906" , "log":"/home/ec2-user/environment/logs-10/a5-1.txt" }
+, { "is":1 , "job":6 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:49:11.912" , "endTimestamp":"20240719:14:50:42.078" , "log":"/home/ec2-user/environment/logs-10/a6-1.txt" }
+, { "is":3 , "job":7 , "iteration":1 , "RC":4 , "startTimestamp":"20240719:14:50:12.057" , "endTimestamp":"20240719:14:51:42.217" , "log":"/home/ec2-user/environment/logs-10/a7-1.txt" }, { "is":3 , "job":7 , "iteration":2 , "RC":4 , "startTimestamp":"20240719:14:51:42.223" , "endTimestamp":"20240719:14:53:12.396" , "log":"/home/ec2-user/environment/logs-10/a7-2.txt" }, { "is":3 , "job":7 , "iteration":3 , "RC":4 , "startTimestamp":"20240719:14:53:12.410" , "endTimestamp":"20240719:14:54:42.517" , "log":"/home/ec2-user/environment/logs-10/a7-3.txt" }
+, { "is":1 , "job":8 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:50:42.083" , "endTimestamp":"20240719:14:53:12.315" , "log":"/home/ec2-user/environment/logs-10/a8-1.txt" }
+, { "is":1 , "job":9 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:53:12.320" , "endTimestamp":"20240719:14:55:12.543" , "log":"/home/ec2-user/environment/logs-10/a9-1.txt" }
+, { "is":2 , "job":10 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:53:12.367" , "endTimestamp":"20240719:14:56:12.679" , "log":"/home/ec2-user/environment/logs-10/a10-1.txt" }
+, { "is":3 , "job":11 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:54:42.523" , "endTimestamp":"20240719:14:56:12.720" , "log":"/home/ec2-user/environment/logs-10/a11-1.txt" }
+, { "is":1 , "job":12 , "iteration":1 , "RC":4 , "startTimestamp":"20240719:14:55:12.549" , "endTimestamp":"20240719:14:56:12.644" , "log":"/home/ec2-user/environment/logs-10/a12-1.txt" }, { "is":1 , "job":12 , "iteration":2 , "RC":4 , "startTimestamp":"20240719:14:56:12.650" , "endTimestamp":"20240719:14:57:12.787" , "log":"/home/ec2-user/environment/logs-10/a12-2.txt" }, { "is":1 , "job":12 , "iteration":3 , "RC":4 , "startTimestamp":"20240719:14:57:12.793" , "endTimestamp":"20240719:14:58:12.910" , "log":"/home/ec2-user/environment/logs-10/a12-3.txt" }
+, { "is":2 , "job":13 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:56:12.692" , "endTimestamp":"20240719:14:59:12.966" , "log":"/home/ec2-user/environment/logs-10/a13-1.txt" }
+, { "is":3 , "job":14 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:56:12.734" , "endTimestamp":"20240719:14:57:12.839" , "log":"/home/ec2-user/environment/logs-10/a14-1.txt" }
+, { "is":3 , "job":15 , "iteration":1 , "RC":0 , "startTimestamp":"20240719:14:57:12.846" , "endTimestamp":"20240719:14:57:42.886" , "log":"/home/ec2-user/environment/logs-10/a15-1.txt" }
+] }
+
+
+
+Info: /home/ec2-user/environment/pgm/parallel-control-loop.bash /home/ec2-user/environment/parms/parms-10.txt /home/ec2-user/environment/parms/commands-10.txt end
+Info: 20240719:14:59:12.981 on ip-172-31-94-74.ec2.internal
+
+
