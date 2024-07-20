@@ -16,14 +16,14 @@ Future Enhancements:
 
 Sample run status JSON strings:
 { "runStatus": [
-{ "pu":1 , "job":1 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:54:48.732" , "endTimestamp":"20240701:23:55:00.926" , "log":"/home/ec2-user/environment/logs-3/a1-1.txt" }
-, { "pu":2 , "job":2 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:54:48.739" , "endTimestamp":"20240701:23:55:19.119" , "log":"/home/ec2-user/environment/logs-3/a2-1.txt" }
-, { "pu":3 , "job":3 , "iteration":1 , "RC":4 , "startTimestamp":"20240701:23:54:48.753" , "endTimestamp":"20240701:23:55:07.018" , "log":"/home/ec2-user/environment/logs-3/a3-1.txt" }, { "pu":3 , "job":3 , "iteration":2 , "RC":4 , "startTimestamp":"20240701:23:55:07.024" , "endTimestamp":"20240701:23:55:25.238" , "log":"/home/ec2-user/environment/logs-3/a3-2.txt" }, { "pu":3 , "job":3 , "iteration":3 , "RC":4 , "startTimestamp":"20240701:23:55:25.244" , "endTimestamp":"20240701:23:55:43.390" , "log":"/home/ec2-user/environment/logs-3/a3-3.txt" }
-, { "pu":1 , "job":4 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:55:00.932" , "endTimestamp":"20240701:23:55:25.181" , "log":"/home/ec2-user/environment/logs-3/a4-1.txt" }
-, { "pu":2 , "job":5 , "iteration":1 , "RC":4 , "startTimestamp":"20240701:23:55:19.127" , "endTimestamp":"20240701:23:55:37.322" , "log":"/home/ec2-user/environment/logs-3/a5-1.txt" }, { "pu":2 , "job":5 , "iteration":2 , "RC":4 , "startTimestamp":"20240701:23:55:37.330" , "endTimestamp":"20240701:23:55:55.472" , "log":"/home/ec2-user/environment/logs-3/a5-2.txt" }, { "pu":2 , "job":5 , "iteration":3 , "RC":4 , "startTimestamp":"20240701:23:55:55.480" , "endTimestamp":"20240701:23:56:13.666" , "log":"/home/ec2-user/environment/logs-3/a5-3.txt" }
-, { "pu":1 , "job":6 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:55:25.187" , "endTimestamp":"20240701:23:56:07.573" , "log":"/home/ec2-user/environment/logs-3/a6-1.txt" }
-, { "pu":3 , "job":7 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:55:43.396" , "endTimestamp":"20240701:23:56:07.630" , "log":"/home/ec2-user/environment/logs-3/a7-1.txt" }
-, { "pu":1 , "job":8 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:56:07.585" , "endTimestamp":"20240701:23:56:25.726" , "log":"/home/ec2-user/environment/logs-3/a8-1.txt" }
+{ "is":1 , "job":1 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:54:48.732" , "endTimestamp":"20240701:23:55:00.926" , "log":"/home/ec2-user/environment/logs-3/a1-1.txt" }
+, { "is":2 , "job":2 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:54:48.739" , "endTimestamp":"20240701:23:55:19.119" , "log":"/home/ec2-user/environment/logs-3/a2-1.txt" }
+, { "is":3 , "job":3 , "iteration":1 , "RC":4 , "startTimestamp":"20240701:23:54:48.753" , "endTimestamp":"20240701:23:55:07.018" , "log":"/home/ec2-user/environment/logs-3/a3-1.txt" }, { "is":3 , "job":3 , "iteration":2 , "RC":4 , "startTimestamp":"20240701:23:55:07.024" , "endTimestamp":"20240701:23:55:25.238" , "log":"/home/ec2-user/environment/logs-3/a3-2.txt" }, { "is":3 , "job":3 , "iteration":3 , "RC":4 , "startTimestamp":"20240701:23:55:25.244" , "endTimestamp":"20240701:23:55:43.390" , "log":"/home/ec2-user/environment/logs-3/a3-3.txt" }
+, { "is":1 , "job":4 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:55:00.932" , "endTimestamp":"20240701:23:55:25.181" , "log":"/home/ec2-user/environment/logs-3/a4-1.txt" }
+, { "is":2 , "job":5 , "iteration":1 , "RC":4 , "startTimestamp":"20240701:23:55:19.127" , "endTimestamp":"20240701:23:55:37.322" , "log":"/home/ec2-user/environment/logs-3/a5-1.txt" }, { "is":2 , "job":5 , "iteration":2 , "RC":4 , "startTimestamp":"20240701:23:55:37.330" , "endTimestamp":"20240701:23:55:55.472" , "log":"/home/ec2-user/environment/logs-3/a5-2.txt" }, { "is":2 , "job":5 , "iteration":3 , "RC":4 , "startTimestamp":"20240701:23:55:55.480" , "endTimestamp":"20240701:23:56:13.666" , "log":"/home/ec2-user/environment/logs-3/a5-3.txt" }
+, { "is":1 , "job":6 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:55:25.187" , "endTimestamp":"20240701:23:56:07.573" , "log":"/home/ec2-user/environment/logs-3/a6-1.txt" }
+, { "is":3 , "job":7 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:55:43.396" , "endTimestamp":"20240701:23:56:07.630" , "log":"/home/ec2-user/environment/logs-3/a7-1.txt" }
+, { "is":1 , "job":8 , "iteration":1 , "RC":0 , "startTimestamp":"20240701:23:56:07.585" , "endTimestamp":"20240701:23:56:25.726" , "log":"/home/ec2-user/environment/logs-3/a8-1.txt" }
 ] }
 
 
