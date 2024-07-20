@@ -9,9 +9,9 @@ job will be run again, up to N times. Repeat for all imaginary servers and assig
 Future Enhancements:
 1) Implement this control loop in Python and Microsoft PowerShell languages.
 2) Adapt to ssh command in Linux environment so that each job can run on different host via ssh command.
-3) Write a Python to analyze all jobs run status to report on start/finish time, wall-clock duration and so on.
+3) Write a Python to analyze all jobs run status to report on start/finish time, wall-clock duration and so on. <-- Implemented in Release v1.1.2.
 4) Fully implement "up to the limit of wall-clock duration is reached", the wall-clock duration check.
-5) Other user-friendliness issues such as logging.
+5) Other user-friendliness issues such as logging. <-- Implemented in Release v1.1.2.
 
 
 Sample run status JSON strings:
