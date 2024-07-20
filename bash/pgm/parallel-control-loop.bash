@@ -10,7 +10,7 @@ function dttm_3_decimals() {
 }
 
 display_jobs_array() {
-	echo ; echo "Info: $(dttm_3_decimals 1) totalJobs=$totalJobs display:"
+	echo ; echo "Info: $(dttm_3_decimals 1) Display $totalJobs jobs:"
 	for (( jobNumber= 1; jobNumber <= totalJobs; jobNumber++ )); do
 		echo "Info: ajProcessor[$jobNumber]=${ajProcessor[$jobNumber]}. ajRC[$jobNumber]=${ajRC[$jobNumber]}. ajProcessId[$jobNumber]=${ajProcessId[$jobNumber]}."
 		echo "        ajCmd[$jobNumber]=${ajCmd[$jobNumber]}."
@@ -19,22 +19,34 @@ display_jobs_array() {
 	echo 
 }
 
-display_processing_units_array() {
-	echo ; echo "Info: $(dttm_3_decimals 1) maxProcessingUnit=$maxProcessingUnit display:"
+
+
+display_imaginary_servers_array() {
+	local L_jobNumber=
+	local L_msg=""
+	echo ; echo "Info: $(dttm_3_decimals 1) Display $maxProcessingUnit imaginary servers:"
 	for (( processorNumber= 1; processorNumber <= maxProcessingUnit; processorNumber++ )); do
-		echo "Info: puAssignedJob[$processorNumber]=${puAssignedJob[$processorNumber]}. puState[$processorNumber]=${puState[$processorNumber]}. puOccurrence[$processorNumber]=${puOccurrence[$processorNumber]}."
+		L_msg="Info: IS $processorNumber isAssignedJob ${isAssignedJob[$processorNumber]} isState ${isState[$processorNumber]} \
+isOccurrence ${isOccurrence[$processorNumber]}"
+		L_jobNumber=${isAssignedJob[$processorNumber]}
+		if [ $L_jobNumber -ge 1 ]; then
+			L_msg+=" process id ${ajProcessId[$L_jobNumber]}."
+		else
+			L_msg+="."
+		fi
+		echo $L_msg
 	done
 	echo 
 }
 
 show_6_vars() {
 	echo "Info:                              jobHighWaterMark=$jobHighWaterMark. ajInProgress=$ajInProgress. ajWaiting=$ajWaiting. ajFinished=$ajFinished."
-	echo "Info:                              puIdle=$puIdle. puBusy=$puBusy."
+	echo "Info:                              isIdle=$isIdle. isBusy=$isBusy."
 }
 
 
-# puIdle=$maxProcessingUnit
-# puBusy=0
+# isIdle=$maxProcessingUnit
+# isBusy=0
 # ajWaiting=$totalJobs
 # ajFinished=0   # <-- When ajFinished is totalJobs then we are done!
 # ajInProgress=0
@@ -43,15 +55,16 @@ show_internal_state() {
 	echo ; echo "Info: $(dttm_3_decimals 1) show_internal_state begin."
 	echo "Info: maxProcessingUnit=$maxProcessingUnit. totalJobs=$totalJobs. jobHighWaterMark=$jobHighWaterMark."
 	echo "         ajInProgress=$ajInProgress. ajWaiting=$ajWaiting. ajFinished=$ajFinished."
-	echo "         puBusy=$puBusy. puIdle=$puIdle."
-	echo "         maxRetry=$maxRetry. logPath=$logPath. waitIntervalSec=$waitIntervalSec."
+	echo "         isBusy=$isBusy. isIdle=$isIdle."
+	echo "         logPath=$logPath. maxRetry=$maxRetry."
+	echo "         waitIntervalSec=$waitIntervalSec. maxIterationLimit=$maxIterationLimit."
 	# echo "Info: $(dttm_3_decimals 0) show_internal_state end."
 	echo
 }
 
 
 
-start_a_new_job() # $1 the processing unit, 1..maxProcessingUnit. $2 the job number, 1..totalJobs. 
+start_a_new_job() # $1 the imaginary server, 1..maxProcessingUnit. $2 the job number, 1..totalJobs. 
 {
 	# Requires 2 input parameters.
 	local L_processorNumber=$1
@@ -59,11 +72,11 @@ start_a_new_job() # $1 the processing unit, 1..maxProcessingUnit. $2 the job num
 	local L_cmd=""
 
 	jobHighWaterMark=$L_jobNumber
-	puAssignedJob[$L_processorNumber]=$L_jobNumber
-	puState[$L_processorNumber]=1
-	puOccurrence[$L_processorNumber]=1
-	let puIdle--
-	let puBusy++
+	isAssignedJob[$L_processorNumber]=$L_jobNumber
+	isState[$L_processorNumber]=1
+	isOccurrence[$L_processorNumber]=1
+	let isIdle--
+	let isBusy++
 
 	ajProcessor[$L_jobNumber]=$L_processorNumber
 	let ajWaiting--
@@ -77,15 +90,15 @@ start_a_new_job() # $1 the processing unit, 1..maxProcessingUnit. $2 the job num
 	ajRC[$L_jobNumber]=-1
 }
 
-rerun_job() # $1 the processing unit, 1..maxProcessingUnit.
+rerun_job() # $1 the imaginary server, 1..maxProcessingUnit.
 {
 	# Requires 1 input parameter.
 	local L_processorNumber=$1
 	local L_cmd=""
-	local L_jobNumber=${puAssignedJob[$L_processorNumber]}
+	local L_jobNumber=${isAssignedJob[$L_processorNumber]}
 
-	let puIdle--
-	let puBusy++
+	let isIdle--
+	let isBusy++
 
 	let ajInProgress++
 
@@ -97,8 +110,8 @@ rerun_job() # $1 the processing unit, 1..maxProcessingUnit.
 	ajProcessId[$L_jobNumber]=$!
 	ajRC[$L_jobNumber]=-1
 
-	puState[$L_processorNumber]=1
-	let puOccurrence[$L_processorNumber]++
+	isState[$L_processorNumber]=1
+	let isOccurrence[$L_processorNumber]++
 }
 
 
@@ -111,7 +124,7 @@ function build_statusDescription() {
 	else
 		newTxt=", "
 	fi
-	newTxt+="{ \"pu\":${ajProcessor[$L_jobNumber]}\
+	newTxt+="{ \"is\":${ajProcessor[$L_jobNumber]}\
  , \"job\":$L_jobNumber\
  , \"iteration\":${ajOccurrence[$L_jobNumber]}\
  , \"RC\":${ajRC[$L_jobNumber]}\
@@ -146,7 +159,7 @@ function display_statusDescription() {
 
 
 
-
+# Main program begins:::
 # Usage:   parallel-control-loop-2-parms.bash parameter-file-path command-file-path
 
 echo "Info: $(dttm_3_decimals 1) on `hostname`"
@@ -197,8 +210,11 @@ printf '\n'
 
 
 
+# aj prefix for All Jobs
+# is prefix for Imaginary Servers. Imaginary server was called processing unit.
+
 # Read commandFile to get all jobs info.    Remove comments and empty lines.
-# setup jobs array when reading the commandFile    aj prefix for All Jobs
+# setup jobs array when reading the commandFile    
 ajStatusDescription=()
 ajProcessor=()    # Values 1..maxProcessingUnit
 ajRC=()           # Return code: -1: the default, for not run yet. 
@@ -208,6 +224,11 @@ ajEndTimestamp=()
 ajCmd=()
 ajOccurrence=()   # # of executions for this job: 0, 1, ... maxRetry.
 ajLogFile=()
+
+isAssignedJob=()
+isState=()
+isOccurrence=()
+
 
 idx=1
 while IFS= read -r line || [ -n "$line" ]
@@ -239,28 +260,28 @@ printf '\n\nInfo: totalJobs=%s\n\n' "${totalJobs}"
 
 
 if [ $totalJobs -lt $maxProcessingUnit ]; then
-	echo "Info: $(dttm_3_decimals 1) More processing unit, $maxProcessingUnit, than jobs, $totalJobs. Reset maxProcessingUnit to $totalJobs, same as jobs."
+	echo "Info: $(dttm_3_decimals 1) $maxProcessingUnit imaginary servers more than $totalJobs jobs. Reset # of imaginary servers to $totalJobs, same as # of jobs."
 	maxProcessingUnit=$totalJobs
 elif [ $totalJobs -gt $maxProcessingUnit ]; then
-	echo "Info: $(dttm_3_decimals 1) More jobs, $totalJobs, than processing unit, $maxProcessingUnit."
+	echo "Info: $(dttm_3_decimals 1) $totalJobs jobs more than $maxProcessingUnit imaginary servers."
 else
-	echo "Info: $(dttm_3_decimals 1) Same processing unit, $maxProcessingUnit, as jobs, $totalJobs. All assigned and running."
+	echo "Info: $(dttm_3_decimals 1) $maxProcessingUnit imaginary servers same as $totalJobs jobs. All assigned and running."
 fi
 echo 
 
 # Verify jobs initialization.
 display_jobs_array
 
-# setup processing units, maxProcessingUnit
+# setup Imaginary Servers, maxProcessingUnit
 for (( idx= 1; idx <= maxProcessingUnit; idx++ )); do
-	puAssignedJob[$idx]=0
-	puState[$idx]=0
-	puOccurrence[$idx]=0
+	isAssignedJob[$idx]=0
+	isState[$idx]=0
+	isOccurrence[$idx]=0
 done
 echo 
 
 # Verify processing Units initialization.
-display_processing_units_array
+display_imaginary_servers_array
 
 
 
@@ -270,23 +291,20 @@ display_processing_units_array
 
 
 
-# Initially assign every processing unit a job and start running! 
+# Initially assign every imaginary server a job and start running! 
 
 durationSecond=3600*${maxDurationHour}
 startSecond=$(date +%s)
 startDttm=`date -d @${startSecond}`
-continueFlag=1
-counter=0
 
-
-# pu prefix for Processing Unit
-puIdle=$maxProcessingUnit
-puBusy=0
+# is prefix for Processing Unit
+isIdle=$maxProcessingUnit
+isBusy=0
 ajFinished=0   # <-- When ajFinished is totalJobs then we are done!
 ajWaiting=$totalJobs
 ajInProgress=0
 jobHighWaterMark=0    # jobHighWaterMark ranges from 1 to totalJobs i.e. ${#ajCmd[@]}
-# The 1st round of assigning jobs to processing unit.
+# The 1st round of assigning jobs to imaginary server.
 processorNumber=1
 jobNumber=1
 while [ $processorNumber -le $maxProcessingUnit ] && [ $jobNumber -le $totalJobs ]; do
@@ -300,39 +318,39 @@ let jobNumber--
 
 show_internal_state
 display_jobs_array
-display_processing_units_array
 echo ; echo 
+display_imaginary_servers_array
 
 
 
 continueFlag=1
 iterationCounter=1
-maxIterationLimit=20
+# maxIterationLimit=20
 while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationCounter -le $maxIterationLimit ]; do
 	env sleep ${waitIntervalSec}s
-	msg="Info: $(dttm_3_decimals 1) $maxProcessingUnit PUs for $totalJobs jobs ${iterationCounter} iteration."
-	msg+=" PUs $puIdle idle, $puBusy busy."
-	msg+=" $ajFinished jobs finished, $ajInProgress in progress, $ajWaiting waiting, and $jobHighWaterMark is job high water mark."
+	msg="Info: $(dttm_3_decimals 1) ${iterationCounter} iteration $maxProcessingUnit ISs $totalJobs jobs."
+	msg+=" ISs $isIdle idle, $isBusy busy."
+	msg+=" Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting, and $jobHighWaterMark high water mark."
 	echo $msg
 
 	processorNumber=1
 	while [ $processorNumber -le $maxProcessingUnit ]; do
-		msg="Info: $(dttm_3_decimals 0) PU ${processorNumber}"
-		if [ ${puAssignedJob[$processorNumber]} -gt 0 ]; then   # A 1-3: processor busy or not?
-			currentJobNumber=${puAssignedJob[$processorNumber]}
-			msg+=" running job $currentJobNumber and process id ${ajProcessId[$currentJobNumber]}"
+		msg="Info: $(dttm_3_decimals 0) IS ${processorNumber}"
+		if [ ${isAssignedJob[$processorNumber]} -gt 0 ]; then   # A 1-3: processor busy or not?
+			currentJobNumber=${isAssignedJob[$processorNumber]}
+			msg+=" running job $currentJobNumber process id ${ajProcessId[$currentJobNumber]}"
 			# Processing Unit was assigned job so check if job finished
 			ps ${ajProcessId[$currentJobNumber]} > /dev/null 2>&1
 			ps_in_progress_RC=$?
 			if [ $ps_in_progress_RC -eq 0 ]; then    # B 1-3: Job running or not?
 				# Processing Unit assigned job still in progress
-				msg+=" in progress"
+				msg+=" in progress."
 			else    # B 2-3: Job running or not? No, job finished! Next check its RC & maxRetry & ajWaiting!
 				# Processing Unit assigned job finished
 				# Get its RC, ajRC[$currentJobNumber]
 				ajEndTimestamp[$currentJobNumber]="\"$(dttm_3_decimals 1)\""
-				let puIdle++
-				let puBusy--
+				let isIdle++
+				let isBusy--
 				let ajInProgress--
 				ajRC[$currentJobNumber]=`tail -1 ${ajLogFile[$currentJobNumber]}`
 				if [ -z "${ajRC[$currentJobNumber]}" ]; then
@@ -344,27 +362,28 @@ while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationC
 
 				if [ ${ajRC[${currentJobNumber}]} -gt 1 ] && [ ${ajOccurrence[${currentJobNumber}]} -ge $maxRetry ]; then
 			    # C 1-4: RC & maxRetry & ajWaiting: RC> 1 && no more rerun
-					msg+=", $maxRetry limit reached no more rerun"
+					msg+=", $maxRetry limit reached no more rerun. "
 					let ajFinished++
 					if [ $ajWaiting -ge 1 ] && [ $jobHighWaterMark -lt $totalJobs ]; then
 						# Start a new job!
 						theNewJobNumber=$((jobHighWaterMark+1))
 						start_a_new_job $processorNumber $theNewJobNumber
-						msg+=", start new job $theNewJobNumber"		
+						msg+="Start new job $theNewJobNumber process id ${ajProcessId[$theNewJobNumber]}."		
 					elif [ $ajFinished -lt $totalJobs ]; then
-						puAssignedJob[$processorNumber]=0
-						puOccurrence[$processorNumber]=0
-						msg+=", no more job to run"
+						isAssignedJob[$processorNumber]=0
+						isOccurrence[$processorNumber]=0
+						msg+="No more job to run. "
 					else
-						puAssignedJob[$processorNumber]=0
-						puOccurrence[$processorNumber]=0
-						msg+=", all jobs done"
+						isAssignedJob[$processorNumber]=0
+						isOccurrence[$processorNumber]=0
+						msg+="Jobs all finished. "
 						continueFlag=0
 					fi
 				elif [ ${ajRC[${currentJobNumber}]} -gt 1 ] && [ ${ajOccurrence[${currentJobNumber}]} -lt $maxRetry ]; then
 				# C 2-4: RC & maxRetry & ajWaiting: RC> 1 && rerun
 					msg+=", rerun $((ajOccurrence[${currentJobNumber}]+1))"
 					rerun_job $processorNumber
+					msg+=" process id ${ajProcessId[${currentJobNumber}]}."
 				else
 				# C 3-4: RC & maxRetry & ajWaiting: RC=0
 				# Finished successfully
@@ -373,46 +392,55 @@ while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationC
 						# Start a new job!
 						theNewJobNumber=$((jobHighWaterMark+1))
 						start_a_new_job $processorNumber $theNewJobNumber
-						msg+=", start new job $theNewJobNumber, $ajWaiting waiting"
+						msg+=". Start new job $theNewJobNumber process id ${ajProcessId[${theNewJobNumber}]}, $ajWaiting waiting."
 					elif [ $ajFinished -eq $totalJobs ]; then
-						puAssignedJob[$processorNumber]=0
-						puOccurrence[$processorNumber]=0
+						isAssignedJob[$processorNumber]=0
+						isOccurrence[$processorNumber]=0
 						continueFlag=0
-						msg+=", $ajInProgress in progress, $ajWaiting waiting, $ajFinished jobs finished"
+						msg+=". Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting."
 					else
-						puAssignedJob[$processorNumber]=0
-						puOccurrence[$processorNumber]=0
-						msg+=", $ajInProgress in progress, $ajWaiting waiting, $ajFinished jobs finished, $totalJobs jobs"
+						isAssignedJob[$processorNumber]=0
+						isOccurrence[$processorNumber]=0
+						msg+=". Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting."
 					fi	
 				fi    # C 4-4
 			fi    # B 3-3: Job running or not? Done!
 		else    # A 2-3: processor busy or not? Idle, NOT busy 
-			msg+=" idle"
+			msg+=" idle. "
 
 			if [ $ajFinished -eq $totalJobs ] && [ $ajWaiting -eq 0 ]; then
 				continueFlag=0
-				msg+=" all finished $ajInProgress in progress, $ajWaiting waiting, $ajFinished jobs"
+				msg+="Jobs $ajFinished all finished."
 			elif [ $ajWaiting -ge 1 ] && [ $jobHighWaterMark -lt $totalJobs ]; then
 				let jobHighWaterMark++
 				start_a_new_job $processorNumber $jobHighWaterMark		
-				msg+=" start new job $jobHighWaterMark, $ajWaiting waiting, $ajFinished jobs"
+				msg+="Start new job $jobHighWaterMark, $ajFinished finished, $ajWaiting waiting."
 			else
-				msg+=" $ajInProgress in progress, $ajWaiting waiting, $ajFinished jobs"
+				msg+="Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting."
 			fi
 		fi    # A 3-3: processor busy or not? Done!
-		msg+="."
+		# msg+="."  
 		echo $msg
 		let processorNumber++
 	done  	# while [ $processorNumber -lt $maxProcessingUnit ]; do
 	let iterationCounter++
 	echo 
 
-done   # while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationCounter -le 10 ]; do
+done   # while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationCounter -le $maxIterationLimit ]; do
 
-msg="Info: $(dttm_3_decimals 1) $maxProcessingUnit PUs for $totalJobs jobs ${iterationCounter} iteration."
-msg+=" PUs $puIdle idle, $puBusy busy."
-msg+=" Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting, and $jobHighWaterMark is job high water mark."
+let iterationCounter--
+msg="Info: $(dttm_3_decimals 1) ${iterationCounter} iteration $maxProcessingUnit ISs $totalJobs jobs."
+msg+=" ISs $isIdle idle, $isBusy busy."
+msg+=" Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting, and $jobHighWaterMark high water mark."
 echo $msg
+
+if [ $iterationCounter -gt $maxIterationLimit ]; then
+	echo 
+	msg="WARNING: $(dttm_3_decimals 1) ${iterationCounter} iteration > $maxIterationLimit maxIterationLimit. Some jobs are NOT finished yet."
+	echo $msg
+fi
+
+
 
 echo ; echo
 display_statusDescription

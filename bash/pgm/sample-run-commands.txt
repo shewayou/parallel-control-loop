@@ -1,0 +1,16 @@
+appPath=/home/ec2-user/environment
+logPath=/home/ec2-user/environment/logs
+# Below interesting to use back tick, `, directly as part of command.
+nohup ${appPath}/pgm/parallel-control-loop.bash ${appPath}/parms/parms-10.txt ${appPath}/parms/commands-10.txt \
+ > ${logPath}/run-results-`date +"%Y%m%d-%H%M%S"`.log 2>&1 &
+
+
+
+dttm=`date +"%Y%m%d-%H%M%S"`;echo $dttm
+nohup ${appPath}/pgm/parallel-control-loop.bash ${appPath}/parms/parms-10.txt ${appPath}/parms/commands-10.txt \
+ > ${logPath}/run-results-${dttm}.log 2>&1 &
+
+
+appPath=/home/ec2-user/environment
+logPath=/home/ec2-user/environment/logs
+${appPath}/pgm/parallel-control-loop.bash ${appPath}/parms/parms-10.txt ${appPath}/parms/commands-10.txt
