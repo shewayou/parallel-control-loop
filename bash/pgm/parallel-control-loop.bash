@@ -9,7 +9,7 @@ function dttm_3_decimals() {
 	fi
 }
 
-display_jobs_array() {
+function display_jobs_array() {
 	echo ; echo "Info: $(dttm_3_decimals 1) Display $totalJobs jobs:"
 	for (( jobNumber= 1; jobNumber <= totalJobs; jobNumber++ )); do
 		echo "Info: ajProcessor[$jobNumber]=${ajProcessor[$jobNumber]}. ajRC[$jobNumber]=${ajRC[$jobNumber]}. ajProcessId[$jobNumber]=${ajProcessId[$jobNumber]}."
@@ -19,9 +19,7 @@ display_jobs_array() {
 	echo 
 }
 
-
-
-display_imaginary_servers_array() {
+function display_imaginary_servers_array() {
 	local L_jobNumber=
 	local L_msg=""
 	echo ; echo "Info: $(dttm_3_decimals 1) Display $maxProcessingUnit imaginary servers:"
@@ -39,11 +37,10 @@ isOccurrence ${isOccurrence[$processorNumber]}"
 	echo 
 }
 
-show_6_vars() {
+function show_6_vars() {
 	echo "Info:                              jobHighWaterMark=$jobHighWaterMark. ajInProgress=$ajInProgress. ajWaiting=$ajWaiting. ajFinished=$ajFinished."
 	echo "Info:                              isIdle=$isIdle. isBusy=$isBusy."
 }
-
 
 # isIdle=$maxProcessingUnit
 # isBusy=0
@@ -51,7 +48,7 @@ show_6_vars() {
 # ajFinished=0   # <-- When ajFinished is totalJobs then we are done!
 # ajInProgress=0
 # jobHighWaterMark=0    # jobHighWaterMark from 1 to totalJobs i.e. ${#ajCmd[@]}
-show_internal_state() {
+function show_internal_state() {
 	echo ; echo "Info: $(dttm_3_decimals 1) show_internal_state begin."
 	echo "Info: maxProcessingUnit=$maxProcessingUnit. totalJobs=$totalJobs. jobHighWaterMark=$jobHighWaterMark."
 	echo "         ajInProgress=$ajInProgress. ajWaiting=$ajWaiting. ajFinished=$ajFinished."
@@ -62,9 +59,7 @@ show_internal_state() {
 	echo
 }
 
-
-
-start_a_new_job() # $1 the imaginary server, 1..maxProcessingUnit. $2 the job number, 1..totalJobs. 
+function start_a_new_job() # $1 the imaginary server, 1..maxProcessingUnit. $2 the job number, 1..totalJobs. 
 {
 	# Requires 2 input parameters.
 	local L_processorNumber=$1
@@ -90,7 +85,7 @@ start_a_new_job() # $1 the imaginary server, 1..maxProcessingUnit. $2 the job nu
 	ajRC[$L_jobNumber]=-1
 }
 
-rerun_job() # $1 the imaginary server, 1..maxProcessingUnit.
+function rerun_job() # $1 the imaginary server, 1..maxProcessingUnit.
 {
 	# Requires 1 input parameter.
 	local L_processorNumber=$1
@@ -114,8 +109,7 @@ rerun_job() # $1 the imaginary server, 1..maxProcessingUnit.
 	let isOccurrence[$L_processorNumber]++
 }
 
-
-function build_statusDescription() {
+function function build_statusDescription() {
 	local L_jobNumber=$1
 	local tmpTxt=${ajStatusDescription[$L_jobNumber]}
 	local newTxt=
