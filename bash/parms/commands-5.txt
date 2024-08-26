@@ -1,0 +1,15 @@
+/home/ec2-user/environment/pgm/run2-no-RC.bash 51s
+/home/ec2-user/environment/pgm/run1-positive-RC.bash 97s
+/home/ec2-user/environment/pgm/run2-no-RC.bash 159s
+/home/ec2-user/environment/pgm/run1.bash 28s
+/home/ec2-user/environment/pgm/run1.bash 23s
+/home/ec2-user/environment/pgm/run1.bash 65s
+# /home/ec2-user/environment/pgm/run1-positive-RC.bash 79s
+# /home/ec2-user/environment/pgm/run1.bash 146s
+# /home/ec2-user/environment/pgm/run1.bash 102s
+# /home/ec2-user/environment/pgm/run1.bash 165s
+# /home/ec2-user/environment/pgm/run1.bash 88s
+# /home/ec2-user/environment/pgm/run1-positive-RC.bash 37s
+# /home/ec2-user/environment/pgm/run1.bash 289s
+# /home/ec2-user/environment/pgm/run1.bash 49s
+# /home/ec2-user/environment/pgm/run1.bash 17s

@@ -109,7 +109,7 @@ function rerun_job() # $1 the imaginary server, 1..maxProcessingUnit.
 	let isOccurrence[$L_processorNumber]++
 }
 
-function function build_statusDescription() {
+function build_statusDescription() {
 	local L_jobNumber=$1
 	local tmpTxt=${ajStatusDescription[$L_jobNumber]}
 	local newTxt=
@@ -155,6 +155,9 @@ function display_statusDescription() {
 
 # Main program begins:::
 # Usage:   parallel-control-loop-2-parms.bash parameter-file-path command-file-path
+# cd this-pgm-folder
+# nohup ./parallel-control-loop-2-parms.bash ../parms/parms-10.txt ../parms/commands-10.txt  > ../logs-10/run-log.txt 2>&1 &
+
 
 echo "Info: $(dttm_3_decimals 1) on `hostname`"
 selfPgm=`readlink -f $0`
@@ -330,76 +333,7 @@ while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationC
 	processorNumber=1
 	while [ $processorNumber -le $maxProcessingUnit ]; do
 		msg="Info: $(dttm_3_decimals 0) IS ${processorNumber}"
-		if [ ${isAssignedJob[$processorNumber]} -gt 0 ]; then   # A 1-3: processor busy or not?
-			currentJobNumber=${isAssignedJob[$processorNumber]}
-			msg+=" running job $currentJobNumber process id ${ajProcessId[$currentJobNumber]}"
-			# Processing Unit was assigned job so check if job finished
-			ps ${ajProcessId[$currentJobNumber]} > /dev/null 2>&1
-			ps_in_progress_RC=$?
-			if [ $ps_in_progress_RC -eq 0 ]; then    # B 1-3: Job running or not?
-				# Processing Unit assigned job still in progress
-				msg+=" in progress."
-			else    # B 2-3: Job running or not? No, job finished! Next check its RC & maxRetry & ajWaiting!
-				# Processing Unit assigned job finished
-				# Get its RC, ajRC[$currentJobNumber]
-				ajEndTimestamp[$currentJobNumber]="\"$(dttm_3_decimals 1)\""
-				let isIdle++
-				let isBusy--
-				let ajInProgress--
-				ajRC[$currentJobNumber]=`tail -1 ${ajLogFile[$currentJobNumber]}`
-				if [ -z "${ajRC[$currentJobNumber]}" ]; then
-					ajRC[$currentJobNumber]=1
-					msg+=", reset RC to ${ajRC[$currentJobNumber]}"
-				fi
-				msg+=", RC ${ajRC[$currentJobNumber]} with ${ajOccurrence[$currentJobNumber]} runs"
-				build_statusDescription $currentJobNumber
-
-				if [ ${ajRC[${currentJobNumber}]} -gt 1 ] && [ ${ajOccurrence[${currentJobNumber}]} -ge $maxRetry ]; then
-			    # C 1-4: RC & maxRetry & ajWaiting: RC> 1 && no more rerun
-					msg+=", $maxRetry limit reached no more rerun. "
-					let ajFinished++
-					if [ $ajWaiting -ge 1 ] && [ $jobHighWaterMark -lt $totalJobs ]; then
-						# Start a new job!
-						theNewJobNumber=$((jobHighWaterMark+1))
-						start_a_new_job $processorNumber $theNewJobNumber
-						msg+="Start new job $theNewJobNumber process id ${ajProcessId[$theNewJobNumber]}."		
-					elif [ $ajFinished -lt $totalJobs ]; then
-						isAssignedJob[$processorNumber]=0
-						isOccurrence[$processorNumber]=0
-						msg+="No more job to run. "
-					else
-						isAssignedJob[$processorNumber]=0
-						isOccurrence[$processorNumber]=0
-						msg+="Jobs all finished. "
-						continueFlag=0
-					fi
-				elif [ ${ajRC[${currentJobNumber}]} -gt 1 ] && [ ${ajOccurrence[${currentJobNumber}]} -lt $maxRetry ]; then
-				# C 2-4: RC & maxRetry & ajWaiting: RC> 1 && rerun
-					msg+=", rerun $((ajOccurrence[${currentJobNumber}]+1))"
-					rerun_job $processorNumber
-					msg+=" process id ${ajProcessId[${currentJobNumber}]}."
-				else
-				# C 3-4: RC & maxRetry & ajWaiting: RC=0
-				# Finished successfully
-					let ajFinished++
-					if [ $ajWaiting -gt 0 ]; then
-						# Start a new job!
-						theNewJobNumber=$((jobHighWaterMark+1))
-						start_a_new_job $processorNumber $theNewJobNumber
-						msg+=". Start new job $theNewJobNumber process id ${ajProcessId[${theNewJobNumber}]}, $ajWaiting waiting."
-					elif [ $ajFinished -eq $totalJobs ]; then
-						isAssignedJob[$processorNumber]=0
-						isOccurrence[$processorNumber]=0
-						continueFlag=0
-						msg+=". Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting."
-					else
-						isAssignedJob[$processorNumber]=0
-						isOccurrence[$processorNumber]=0
-						msg+=". Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting."
-					fi	
-				fi    # C 4-4
-			fi    # B 3-3: Job running or not? Done!
-		else    # A 2-3: processor busy or not? Idle, NOT busy 
+		if [ ${isAssignedJob[$processorNumber]} -eq 0 ]; then   # A 1-1: processor idle?
 			msg+=" idle. "
 
 			if [ $ajFinished -eq $totalJobs ] && [ $ajWaiting -eq 0 ]; then
@@ -412,7 +346,90 @@ while [ $continueFlag -eq 1 ] && [ $ajFinished -lt $totalJobs ] && [ $iterationC
 			else
 				msg+="Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting."
 			fi
-		fi    # A 3-3: processor busy or not? Done!
+			echo $msg
+			let processorNumber++
+			continue
+		fi    # A 1-1: processor idle? Done!
+
+
+
+		currentJobNumber=${isAssignedJob[$processorNumber]}
+		msg+=" running job $currentJobNumber process id ${ajProcessId[$currentJobNumber]}"
+		# Processing Unit was assigned job so check if job finished
+		ps ${ajProcessId[$currentJobNumber]} > /dev/null 2>&1
+		ps_in_progress_RC=$?
+		if [ $ps_in_progress_RC -eq 0 ]; then    # B 1-1: Job still running?
+			# Processing Unit assigned job still in progress
+			msg+=" in progress."
+			echo $msg
+			let processorNumber++
+			continue
+		fi    # B 1-1: Job still running? Done!
+
+
+
+		# Processing Unit assigned job finished
+		# Get its RC, ajRC[$currentJobNumber]
+		ajEndTimestamp[$currentJobNumber]="\"$(dttm_3_decimals 1)\""
+		let isIdle++
+		let isBusy--
+		let ajInProgress--
+		ajRC[$currentJobNumber]=`tail -1 ${ajLogFile[$currentJobNumber]}`
+
+		# Each job should log its RC at the end of its log!
+		# If no RC logged then RC=1 is assumed!
+		if [ -z "${ajRC[$currentJobNumber]}" ]; then
+			ajRC[$currentJobNumber]=1
+			msg+=", reset RC to 1. This job must be enhanced to log its RC at the end of its log file"
+		fi
+		msg+=", RC ${ajRC[$currentJobNumber]} with ${ajOccurrence[$currentJobNumber]} runs"
+		build_statusDescription $currentJobNumber
+
+		if [ ${ajRC[${currentJobNumber}]} -gt 1 ] && [ ${ajOccurrence[${currentJobNumber}]} -ge $maxRetry ]; then
+		   	# C 1-4: RC > 1 & equal to maxRetry   No more rerun:
+			msg+=", $maxRetry limit reached no more rerun. "
+			let ajFinished++
+			if [ $ajWaiting -ge 1 ] && [ $jobHighWaterMark -lt $totalJobs ]; then
+				# Start a new job!
+				theNewJobNumber=$((jobHighWaterMark+1))
+				start_a_new_job $processorNumber $theNewJobNumber
+				msg+="Start new job $theNewJobNumber process id ${ajProcessId[$theNewJobNumber]}."		
+			elif [ $ajFinished -lt $totalJobs ]; then
+				isAssignedJob[$processorNumber]=0
+				isOccurrence[$processorNumber]=0
+				msg+="No more job to run. "
+			else
+				isAssignedJob[$processorNumber]=0
+				isOccurrence[$processorNumber]=0
+				msg+="Jobs all finished. "
+				continueFlag=0
+			fi
+		elif [ ${ajRC[${currentJobNumber}]} -gt 1 ] && [ ${ajOccurrence[${currentJobNumber}]} -lt $maxRetry ]; then
+		# C 2-4: RC > 1 & less than maxRetry   OK to rerun:
+			msg+=", rerun $((ajOccurrence[${currentJobNumber}]+1))"
+			rerun_job $processorNumber
+			msg+=" process id ${ajProcessId[${currentJobNumber}]}."
+		else
+		# C 3-4: RC & maxRetry & ajWaiting: RC=0
+		# Finished successfully
+			let ajFinished++
+			if [ $ajWaiting -gt 0 ]; then
+				# Start a new job!
+				theNewJobNumber=$((jobHighWaterMark+1))
+				start_a_new_job $processorNumber $theNewJobNumber
+				msg+=". Start new job $theNewJobNumber process id ${ajProcessId[${theNewJobNumber}]}, $ajWaiting waiting."
+			elif [ $ajFinished -eq $totalJobs ]; then
+				isAssignedJob[$processorNumber]=0
+				isOccurrence[$processorNumber]=0
+				continueFlag=0
+				msg+=". Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting."
+			else
+				isAssignedJob[$processorNumber]=0
+				isOccurrence[$processorNumber]=0
+				msg+=". Jobs $ajFinished finished, $ajInProgress in progress, $ajWaiting waiting."
+			fi	
+		fi    # C 4-4
+
 		# msg+="."  
 		echo $msg
 		let processorNumber++
